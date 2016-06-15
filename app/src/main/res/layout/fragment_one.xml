@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView"
+        android:src="@drawable/bg1"
+        android:scaleType="fitXY"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_to"
+            android:textSize="@dimen/intro_fragment_small_text"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="@dimen/fragment_text_start_padding"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/space_name"
+            android:textSize="@dimen/intro_fragment_large_text"
+            android:id="@+id/spaceNameView"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="@dimen/fragment_text_start_padding"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/space_subtitle"
+            android:textSize="@dimen/intro_fragment_medium_text"
+            android:id="@+id/spaceNameView2"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="@dimen/fragment_text_start_padding"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/space_pitch"
+            android:layout_marginTop="10dp"
+            android:id="@+id/descriptionTextView"
+            android:textSize="@dimen/intro_fragment_small_text"
+            android:layout_marginStart="@dimen/fragment_text_start_padding"
+            android:layout_marginEnd="@dimen/fragment_text_start_padding"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        android:textSize="16sp"
+        android:id="@+id/button"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/buttonColor"
+        android:layout_gravity="center_horizontal|bottom" />
+
+
+</FrameLayout>

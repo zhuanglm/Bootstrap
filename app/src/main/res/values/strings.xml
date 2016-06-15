@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Bootstrap</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- part 1 -->
+    <string name="welcome_to">Welcome to the</string>
+    <string name="space_name">Work Space</string>
+    <string name="space_subtitle">Powered by Thundersoft</string>
+    <string name="next">Next</string>
+
+    <!-- part 2 -->
+    <string name="space_pitch">Balance your professional and personal life with multiple Spaces</string>
+
+    <string name="what_space_do">What you can do with a Work Space</string>
+
+    <!-- part 3 -->
+    <string name="space_ready">Your Work Space is ready</string>
+    <string name="space_instructions">Tap the icon to switch between your personal and work Spaces</string>
+    <string name="launch">Launch</string>
+</resources>
