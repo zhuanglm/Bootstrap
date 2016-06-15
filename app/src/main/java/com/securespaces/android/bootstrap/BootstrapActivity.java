@@ -1,27 +1,26 @@
 package com.securespaces.android.bootstrap;
 
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class BootstrapActivity extends AppCompatActivity {
-
+public class BootstrapActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
+    private static final int FINAL_FRAGMENT = 2;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -31,14 +30,24 @@ public class BootstrapActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
     private ViewPager mViewPager;
     private ArrayList<Fragment> mFragments;
+    private ArrayList<ImageView> mPageIndicators;
+    private Button mProceedButton;
+    private int mCurrentPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bootstrap);
+
+        mProceedButton = (Button)findViewById(R.id.proceedButton);
+        mProceedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onProceedPushed();
+            }
+        });
 
         mFragments = new ArrayList<>();
         mFragments.add(new FragmentOne());
@@ -52,7 +61,56 @@ public class BootstrapActivity extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        mViewPager.addOnPageChangeListener(this);
 
+        mPageIndicators = new ArrayList<>();
+        mPageIndicators.add((ImageView)findViewById(R.id.pageIndicator1));
+        mPageIndicators.add((ImageView)findViewById(R.id.pageIndicator2));
+        mPageIndicators.add((ImageView)findViewById(R.id.pageIndicator3));
+
+        for (int i = 0; i < mPageIndicators.size(); i++) {
+            final int x = i;
+            mPageIndicators.get(i).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mViewPager.setCurrentItem(x, true);
+                }
+            });
+        }
+
+    }
+
+    private void setPageIndicatorDots(int oldPosition, int newPosition) {
+        mPageIndicators.get(newPosition).setImageDrawable(getDrawable(R.drawable.circle_full));
+        mPageIndicators.get(oldPosition).setImageDrawable(getDrawable(R.drawable.circle_empty));
+    }
+
+    private void onProceedPushed() {
+        if (mCurrentPosition < FINAL_FRAGMENT) {
+            mViewPager.setCurrentItem(mCurrentPosition + 1, true);
+        } else if (mCurrentPosition == FINAL_FRAGMENT) {
+            finish();
+        }
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        setPageIndicatorDots(mCurrentPosition, position);
+        mCurrentPosition = position;
+        if (position == FINAL_FRAGMENT) {
+            mProceedButton.setText(R.string.launch);
+        } else {
+            mProceedButton.setText(R.string.next);
+        }
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
 
     }
 

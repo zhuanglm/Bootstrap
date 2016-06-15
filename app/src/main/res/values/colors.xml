@@ -6,4 +6,5 @@
 
     <color name="buttonColor">#EE4040</color>
     <color name="textWhite">#FFF</color>
+    <color name="lightGray">#999</color>
 </resources>

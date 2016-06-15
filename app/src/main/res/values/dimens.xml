@@ -3,6 +3,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="page_indicator_size">40dp</dimen>
+    <dimen name="page_indicator_padding">20dp</dimen>
+
     <dimen name="fragment_text_start_padding">22dp</dimen>
 
     <dimen name="intro_fragment_large_text">36sp</dimen>
