@@ -3,7 +3,7 @@
     android:shape="oval">
     <solid android:color="@color/lightGray"/>
     <stroke
-        android:width="4dp"
+        android:width="@dimen/page_indicator_stroke"
         android:color="@color/textWhite"/>
     <size
         android:height="@dimen/page_indicator_size"

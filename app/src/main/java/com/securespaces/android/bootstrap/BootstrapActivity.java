@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.view.WindowInsets;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,7 +32,7 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
-    private ArrayList<Fragment> mFragments;
+    private ArrayList<InsetFragment> mFragments;
     private ArrayList<ImageView> mPageIndicators;
     private Button mProceedButton;
     private int mCurrentPosition;
@@ -39,6 +40,9 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         setContentView(R.layout.activity_bootstrap);
 
         mProceedButton = (Button)findViewById(R.id.proceedButton);
@@ -63,21 +67,21 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.addOnPageChangeListener(this);
 
+        mViewPager.requestApplyInsets();
+        mViewPager.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener() {
+            @Override
+            public WindowInsets onApplyWindowInsets(View v, WindowInsets insets) {
+                for (InsetFragment fragment : mFragments) {
+                    fragment.applyWindowInsets(insets);
+                }
+                return insets;
+            }
+        });
+
         mPageIndicators = new ArrayList<>();
         mPageIndicators.add((ImageView)findViewById(R.id.pageIndicator1));
         mPageIndicators.add((ImageView)findViewById(R.id.pageIndicator2));
         mPageIndicators.add((ImageView)findViewById(R.id.pageIndicator3));
-
-        for (int i = 0; i < mPageIndicators.size(); i++) {
-            final int x = i;
-            mPageIndicators.get(i).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mViewPager.setCurrentItem(x, true);
-                }
-            });
-        }
-
     }
 
     private void setPageIndicatorDots(int oldPosition, int newPosition) {

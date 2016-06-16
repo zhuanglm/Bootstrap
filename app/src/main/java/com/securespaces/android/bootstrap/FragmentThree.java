@@ -9,12 +9,13 @@ import android.view.ViewGroup;
 /**
  * Created by eric on 15/06/16.
  */
-public class FragmentThree extends Fragment {
+public class FragmentThree extends InsetFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_two, container, false);
-        return view;
+        mView = inflater.inflate(R.layout.fragment_three, container, false);
+        setupInsetListener();
+        return mView;
     }
 }
