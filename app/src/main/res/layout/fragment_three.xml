@@ -11,7 +11,7 @@
         android:scaleType="fitXY"
         android:layout_gravity="center"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:fitsSystemWindows="true"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -20,13 +20,35 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/space_name"
-            android:textSize="@dimen/intro_fragment_large_text"
+            android:text="@string/space_ready"
+            android:textSize="32sp"
             android:id="@+id/spaceNameView"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="@dimen/text_top_padding"
             android:layout_marginStart="@dimen/fragment_text_start_padding"
             />
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/space_instructions"
+            android:paddingStart="@dimen/fragment_text_start_padding"
+            android:paddingEnd="@dimen/fragment_text_end_padding"
+            android:textSize="@dimen/intro_fragment_small_text"
+            android:id="@+id/textView"
+            android:layout_below="@+id/spaceNameView"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="100dp" />
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:id="@+id/imageView2"
+            android:src="@drawable/ic_switch"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true" />
+
+
+
+    </RelativeLayout>
 
 </FrameLayout>

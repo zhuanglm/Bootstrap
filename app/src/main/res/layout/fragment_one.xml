@@ -21,8 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/welcome_to"
-            android:textSize="@dimen/intro_fragment_small_text"
-            android:layout_marginTop="2dp"
+            android:textSize="@dimen/intro_fragment_medium_text"
+            android:layout_marginTop="@dimen/text_top_padding"
             android:layout_marginStart="@dimen/fragment_text_start_padding"
             />
 
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/space_name"
-            android:textSize="@dimen/intro_fragment_large_text"
+            android:textSize="@dimen/intro_fragment_extra_large_text"
             android:id="@+id/spaceNameView"
             android:layout_marginTop="2dp"
             android:layout_marginStart="@dimen/fragment_text_start_padding"

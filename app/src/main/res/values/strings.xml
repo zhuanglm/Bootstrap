@@ -12,7 +12,14 @@
     <!-- part 2 -->
     <string name="space_pitch">Balance your professional and personal life with multiple Spaces</string>
 
-    <string name="what_space_do">What you can do with a Work Space</string>
+    <string name="space_features_title">What you can do with a Work Space:</string>
+    <string name="space_features_list">
+        &#8226; Keep your work apps and accounts separate from your personal apps and accounts \n
+        &#8226; Switch between Spaces using different PINs\n
+        &#8226; Information is encrypted in each Space\n
+        &#8226; Let IT manage your Work Space and nothing else.\n
+        &#8226; Protect work data from malware and viruses.\n
+    </string>
 
     <!-- part 3 -->
     <string name="space_ready">Your Work Space is ready</string>

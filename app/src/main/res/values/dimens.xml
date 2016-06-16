@@ -7,8 +7,11 @@
     <dimen name="page_indicator_padding">20dp</dimen>
     <dimen name="page_indicator_stroke">1dp</dimen>
 
+    <dimen name="text_top_padding">30dp</dimen>
     <dimen name="fragment_text_start_padding">22dp</dimen>
+    <dimen name="fragment_text_end_padding">22dp</dimen>
 
+    <dimen name="intro_fragment_extra_large_text">42sp</dimen>
     <dimen name="intro_fragment_large_text">36sp</dimen>
     <dimen name="intro_fragment_medium_text">28sp</dimen>
     <dimen name="intro_fragment_small_text">17sp</dimen>

@@ -1,5 +1,7 @@
 package com.securespaces.android.bootstrap;
 
+import android.content.ComponentName;
+import android.content.Intent;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 
@@ -22,6 +24,9 @@ import java.util.ArrayList;
 
 public class BootstrapActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
     private static final int FINAL_FRAGMENT = 2;
+    private static final String TARGET_PACKAGE = "com.android.calculator2";
+    private static final String TARGET_CLASS = "com.android.calculator2.Calculator";
+
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -93,6 +98,10 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
         if (mCurrentPosition < FINAL_FRAGMENT) {
             mViewPager.setCurrentItem(mCurrentPosition + 1, true);
         } else if (mCurrentPosition == FINAL_FRAGMENT) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            ComponentName componentName = new ComponentName(TARGET_PACKAGE, TARGET_CLASS);
+            intent.setComponent(componentName);
+            startActivity(intent);
             finish();
         }
     }
