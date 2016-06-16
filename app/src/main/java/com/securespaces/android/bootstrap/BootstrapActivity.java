@@ -101,6 +101,7 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
             Intent intent = new Intent(Intent.ACTION_MAIN);
             ComponentName componentName = new ComponentName(TARGET_PACKAGE, TARGET_CLASS);
             intent.setComponent(componentName);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
         }
