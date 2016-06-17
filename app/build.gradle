@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.securespaces.android.bootstrap"
+        applicationId "com.securespaces.android.bootstrap.thundersoft"
         minSdkVersion 23
         targetSdkVersion 23
         versionCode 1

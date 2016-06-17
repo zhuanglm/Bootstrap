@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">初始引导</string>
+
+    <!-- part 1 -->
+    <string name="welcome_to">欢迎来到</string>
+    <string name="space_name">工作空间</string>
+    <string name="space_subtitle">中科创达为您提供</string>
+    <string name="next">下一步</string>
+
+    <!-- part 2 -->
+    <string name="space_pitch">利用多空间，平衡您的工作和生活</string>
+
+    <string name="space_features_title">工作空间可以为您提供：</string>
+
+    <string-array name="space_features">
+        <item>将工作应用账号与您的私人应用账号隔离开来</item>
+        <item>使用不同的密码在空间中来回切换</item>
+        <item>各个空间中的信息独立加密</item>
+        <item>IT管理员仅可以管理您的工作空间</item>
+        <item>防止恶意软件或病毒侵袭</item>
+    </string-array>
+
+    <!-- part 3 -->
+    <string name="space_ready">您的工作空间已就绪</string>
+    <string name="space_instructions">点击图标，您可以私人空间和工作空间中来回切换</string>
+    <string name="launch">启动</string>
+</resources>

@@ -1,5 +1,6 @@
 package com.securespaces.android.bootstrap;
 
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.media.Image;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class BootstrapActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
+    private static final String TAG = "Bootstrap";
     private static final int FINAL_FRAGMENT = 2;
     private static final String TARGET_PACKAGE = "com.android.calculator2";
     private static final String TARGET_CLASS = "com.android.calculator2.Calculator";
@@ -102,7 +104,12 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
             ComponentName componentName = new ComponentName(TARGET_PACKAGE, TARGET_CLASS);
             intent.setComponent(componentName);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+            try {
+                startActivity(intent);
+            } catch (ActivityNotFoundException ex) {
+                //just close then
+                Log.e(TAG,"Unable to find activity");
+            }
             finish();
         }
     }
@@ -159,41 +166,6 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
                     return "SECTION 3";
             }
             return null;
-        }
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_bootstrap, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
         }
     }
 }
