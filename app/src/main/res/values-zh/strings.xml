@@ -25,4 +25,5 @@
     <string name="space_ready">您的工作空间已就绪</string>
     <string name="space_instructions">点击图标，您可以私人空间和工作空间中来回切换</string>
     <string name="launch">启动</string>
+    <string name="space_content_downloading">正在加载空间内容</string>
 </resources>

@@ -2,27 +2,20 @@ package com.securespaces.android.bootstrap;
 
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.media.Image;
-import android.support.v7.app.AppCompatActivity;
-
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-
 import android.view.WindowInsets;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -30,6 +23,8 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
     private static final String TAG = "Bootstrap";
     private static final int FINAL_FRAGMENT = 2;
     private static final String TARGET_PACKAGE = "com.nq.mdm";
+    // com.securespaces.android.xiaomitest.mi
+    // com.nq.mdm
     private static final String TARGET_CLASS = "com.android.calculator2.Calculator";
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -44,7 +39,7 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
         public void onReceive(Context context, Intent intent) {
             if (intent.getData().getEncodedSchemeSpecificPart().equals(TARGET_PACKAGE)) {
                 if (mProceedButton != null) {
-                    mProceedButton.setEnabled(true);
+                    targetPackageFound();
                 }
             }
         }
@@ -136,6 +131,10 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
         return getPackageManager().getLaunchIntentForPackage(TARGET_PACKAGE) != null;
     }
 
+    private void targetPackageFound() {
+        mProceedButton.setEnabled(true);
+        ((FragmentThree)mFragments.get(FINAL_FRAGMENT)).targetApkFound();
+    }
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -148,7 +147,7 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
         if (position == FINAL_FRAGMENT) {
             mProceedButton.setText(R.string.launch);
             if (canFindTargetPackage()) {
-                mProceedButton.setEnabled(true);
+                targetPackageFound();
             } else {
                 mProceedButton.setEnabled(false);
             }

@@ -15,17 +15,32 @@
         android:fitsSystemWindows="true"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="right|center_vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/space_ready"
-            android:textSize="32sp"
-            android:id="@+id/spaceNameView"
+            android:text="@string/space_content_downloading"
+            android:textSize="30sp"
+            android:id="@+id/topTextView"
             android:layout_marginTop="@dimen/text_top_padding"
             android:layout_marginStart="@dimen/fragment_text_start_padding"
+            android:layout_marginEnd="@dimen/fragment_text_end_padding"
+            android:gravity="center_horizontal"
             />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:paddingTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/topTextView"
+            android:layout_centerHorizontal="true">
+        </ProgressBar>
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,17 +49,19 @@
             android:paddingStart="@dimen/fragment_text_start_padding"
             android:paddingEnd="@dimen/fragment_text_end_padding"
             android:textSize="@dimen/intro_fragment_small_text"
-            android:id="@+id/textView"
-            android:layout_below="@+id/spaceNameView"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="100dp" />
+            android:id="@+id/switchTextView"
+            android:visibility="invisible"
+            android:gravity="center"
+            android:layout_above="@+id/imageView2"
+            android:layout_alignParentStart="true" />
 
         <ImageView
             android:layout_width="300dp"
             android:layout_height="250dp"
             android:id="@+id/imageView2"
             android:src="@drawable/ic_switch"
-            android:layout_below="@+id/textView"
+            android:visibility="invisible"
+            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
 
 
