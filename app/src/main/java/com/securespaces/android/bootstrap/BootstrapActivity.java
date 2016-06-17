@@ -1,8 +1,11 @@
 package com.securespaces.android.bootstrap;
 
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 
@@ -29,20 +32,23 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
     private static final String TARGET_PACKAGE = "com.nq.mdm";
     private static final String TARGET_CLASS = "com.android.calculator2.Calculator";
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     private ArrayList<InsetFragment> mFragments;
     private ArrayList<ImageView> mPageIndicators;
     private Button mProceedButton;
     private int mCurrentPosition;
+
+    BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getData().getEncodedSchemeSpecificPart().equals(TARGET_PACKAGE)) {
+                if (mProceedButton != null) {
+                    mProceedButton.setEnabled(true);
+                }
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,12 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                  | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         setContentView(R.layout.activity_bootstrap);
+
+        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
+        intentFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
+        intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
+        intentFilter.addDataScheme("package");
+        registerReceiver(mBroadcastReceiver, intentFilter);
 
         mProceedButton = (Button)findViewById(R.id.proceedButton);
         mProceedButton.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +103,12 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
         mPageIndicators.add((ImageView)findViewById(R.id.pageIndicator3));
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(mBroadcastReceiver);
+    }
+
     private void setPageIndicatorDots(int oldPosition, int newPosition) {
         mPageIndicators.get(newPosition).setImageDrawable(getDrawable(R.drawable.circle_full));
         mPageIndicators.get(oldPosition).setImageDrawable(getDrawable(R.drawable.circle_empty));
@@ -114,6 +132,10 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
         }
     }
 
+    private boolean canFindTargetPackage() {
+        return getPackageManager().getLaunchIntentForPackage(TARGET_PACKAGE) != null;
+    }
+
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -125,8 +147,14 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
         mCurrentPosition = position;
         if (position == FINAL_FRAGMENT) {
             mProceedButton.setText(R.string.launch);
+            if (canFindTargetPackage()) {
+                mProceedButton.setEnabled(true);
+            } else {
+                mProceedButton.setEnabled(false);
+            }
         } else {
             mProceedButton.setText(R.string.next);
+            mProceedButton.setEnabled(true);
         }
     }
 

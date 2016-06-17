@@ -59,7 +59,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/buttonColor"
+            android:background="@drawable/launch_button_background"
             android:layout_gravity="center_horizontal|bottom" />
     </LinearLayout>
 
