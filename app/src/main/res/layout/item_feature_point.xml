@@ -4,19 +4,19 @@
     android:layout_height="match_parent"
     android:paddingTop="10dp">
 
-    <ImageButton
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/arrow"
-        android:paddingTop="3dp"
-        android:paddingEnd="5dp"
-        android:background="@android:color/transparent"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/imageButton" />
+        android:text="&#8226;"
+        android:textSize="@dimen/intro_fragment_small_text"
+        android:id="@+id/textView" />
+
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingStart="5dp"
         android:text="@string/app_name"
         android:textSize="@dimen/intro_fragment_small_text"
         android:id="@+id/textView2" />

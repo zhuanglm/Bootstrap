@@ -1,11 +1,14 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.securespaces.signing'
+
+def apkName = "Bootstrap"
 
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.securespaces.android.bootstrap.thundersoft"
+        applicationId "com.securespaces.android.bootstrap.nationsky"
         minSdkVersion 23
         targetSdkVersion 23
         versionCode 1
@@ -13,8 +16,18 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFile = new File(
+                    output.outputFile.parent,
+                    output.outputFile.name
+                            .replace(".apk", "-${variant.versionName}.apk")
+                            .replace("app", apkName)
+            )
         }
     }
 }

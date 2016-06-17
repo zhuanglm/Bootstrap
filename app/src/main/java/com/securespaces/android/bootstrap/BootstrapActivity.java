@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class BootstrapActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
     private static final String TAG = "Bootstrap";
     private static final int FINAL_FRAGMENT = 2;
-    private static final String TARGET_PACKAGE = "com.android.calculator2";
+    private static final String TARGET_PACKAGE = "com.nq.mdm";
     private static final String TARGET_CLASS = "com.android.calculator2.Calculator";
 
     /**
@@ -100,15 +100,15 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
         if (mCurrentPosition < FINAL_FRAGMENT) {
             mViewPager.setCurrentItem(mCurrentPosition + 1, true);
         } else if (mCurrentPosition == FINAL_FRAGMENT) {
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            ComponentName componentName = new ComponentName(TARGET_PACKAGE, TARGET_CLASS);
-            intent.setComponent(componentName);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             try {
-                startActivity(intent);
+                Intent intent = getPackageManager().getLaunchIntentForPackage(TARGET_PACKAGE);
+                if (intent != null) {
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
             } catch (ActivityNotFoundException ex) {
                 //just close then
-                Log.e(TAG,"Unable to find activity");
+                Log.e(TAG,"Unable to launch activity");
             }
             finish();
         }
