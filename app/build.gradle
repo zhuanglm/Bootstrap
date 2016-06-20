@@ -8,16 +8,24 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.securespaces.android.bootstrap.nationsky"
+        applicationId "com.securespaces.android.bootstrap"
         minSdkVersion 22
         targetSdkVersion 22
-        versionCode 7
-        versionName "1.06"
+        versionCode 8
+        versionName "1.07"
     }
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+        nationsky {
+            applicationId "com.securespaces.android.bootstrap.nationsky"
+        }
+        thundersoft {
+            applicationId "com.securespaces.android.bootstrap.thundersoft"
         }
     }
     applicationVariants.all { variant ->

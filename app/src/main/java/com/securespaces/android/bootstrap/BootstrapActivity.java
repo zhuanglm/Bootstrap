@@ -22,10 +22,9 @@ import java.util.ArrayList;
 public class BootstrapActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
     private static final String TAG = "Bootstrap";
     private static final int FINAL_FRAGMENT = 2;
-    private static final String TARGET_PACKAGE = "com.nq.mdm";
+
     // com.securespaces.android.xiaomitest.mi
     // com.nq.mdm
-    private static final String TARGET_CLASS = "com.android.calculator2.Calculator";
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
@@ -37,7 +36,7 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
     BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent.getData().getEncodedSchemeSpecificPart().equals(TARGET_PACKAGE)) {
+            if (intent.getData().getEncodedSchemeSpecificPart().equals(getTargetPackage())) {
                 if (mProceedButton != null) {
                     targetPackageFound();
                 }
@@ -52,12 +51,6 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                  | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         setContentView(R.layout.activity_bootstrap);
-
-        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
-        intentFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
-        intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
-        intentFilter.addDataScheme("package");
-        registerReceiver(mBroadcastReceiver, intentFilter);
 
         mProceedButton = (Button)findViewById(R.id.proceedButton);
         mProceedButton.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +89,12 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
         mPageIndicators.add((ImageView)findViewById(R.id.pageIndicator1));
         mPageIndicators.add((ImageView)findViewById(R.id.pageIndicator2));
         mPageIndicators.add((ImageView)findViewById(R.id.pageIndicator3));
+
+        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
+        intentFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
+        intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
+        intentFilter.addDataScheme("package");
+        registerReceiver(mBroadcastReceiver, intentFilter);
     }
 
     @Override
@@ -109,12 +108,15 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
         mPageIndicators.get(oldPosition).setImageDrawable(getDrawable(R.drawable.circle_empty));
     }
 
+    private String getTargetPackage() {
+        return getString(R.string.target_package);
+    }
     private void onProceedPushed() {
         if (mCurrentPosition < FINAL_FRAGMENT) {
             mViewPager.setCurrentItem(mCurrentPosition + 1, true);
         } else if (mCurrentPosition == FINAL_FRAGMENT) {
             try {
-                Intent intent = getPackageManager().getLaunchIntentForPackage(TARGET_PACKAGE);
+                Intent intent = getPackageManager().getLaunchIntentForPackage(getTargetPackage());
                 if (intent != null) {
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
@@ -128,7 +130,7 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
     }
 
     private boolean canFindTargetPackage() {
-        return getPackageManager().getLaunchIntentForPackage(TARGET_PACKAGE) != null;
+        return getPackageManager().getLaunchIntentForPackage(getTargetPackage()) != null;
     }
 
     private void targetPackageFound() {

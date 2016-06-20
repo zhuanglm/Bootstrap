@@ -31,9 +31,13 @@ public class FragmentThree extends InsetFragment {
     }
 
     public void targetApkFound() {
-        mTopTextView.setText(R.string.space_ready);
-        mProgressBar.setVisibility(View.GONE);
-        mSwitchInstructionsTextView.setVisibility(View.VISIBLE);
-        mSwitchIcon.setVisibility(View.VISIBLE);
+        if (mTopTextView != null)
+            mTopTextView.setText(R.string.space_ready);
+        if (mProgressBar != null)
+            mProgressBar.setVisibility(View.GONE);
+        if (mSwitchInstructionsTextView != null)
+            mSwitchInstructionsTextView.setVisibility(View.VISIBLE);
+        if (mSwitchIcon != null)
+            mSwitchIcon.setVisibility(View.VISIBLE);
     }
 }
