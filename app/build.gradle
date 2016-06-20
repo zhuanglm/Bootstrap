@@ -9,10 +9,10 @@ android {
 
     defaultConfig {
         applicationId "com.securespaces.android.bootstrap.nationsky"
-        minSdkVersion 23
-        targetSdkVersion 23
-        versionCode 5
-        versionName "1.04"
+        minSdkVersion 22
+        targetSdkVersion 22
+        versionCode 7
+        versionName "1.06"
     }
     buildTypes {
         release {
