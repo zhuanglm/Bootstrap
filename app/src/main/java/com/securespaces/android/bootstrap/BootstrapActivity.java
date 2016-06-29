@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowInsets;
@@ -29,7 +30,6 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     private ArrayList<InsetFragment> mFragments;
-    private ArrayList<ImageView> mPageIndicators;
     private Button mProceedButton;
     private int mCurrentPosition;
 
@@ -85,10 +85,9 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
             }
         });
 
-        mPageIndicators = new ArrayList<>();
-        mPageIndicators.add((ImageView)findViewById(R.id.pageIndicator1));
-        mPageIndicators.add((ImageView)findViewById(R.id.pageIndicator2));
-        mPageIndicators.add((ImageView)findViewById(R.id.pageIndicator3));
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
         intentFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
@@ -101,11 +100,6 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
     public void onDestroy() {
         super.onDestroy();
         unregisterReceiver(mBroadcastReceiver);
-    }
-
-    private void setPageIndicatorDots(int oldPosition, int newPosition) {
-        mPageIndicators.get(newPosition).setImageDrawable(getDrawable(R.drawable.circle_full));
-        mPageIndicators.get(oldPosition).setImageDrawable(getDrawable(R.drawable.circle_empty));
     }
 
     private String getTargetPackage() {
@@ -144,7 +138,6 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
 
     @Override
     public void onPageSelected(int position) {
-        setPageIndicatorDots(mCurrentPosition, position);
         mCurrentPosition = position;
         if (position == FINAL_FRAGMENT) {
             mProceedButton.setText(R.string.launch);

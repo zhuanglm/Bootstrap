@@ -1,60 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/imageView"
-        android:src="@drawable/bg1"
-        android:scaleType="fitXY"
-        android:layout_gravity="center"/>
+        android:layout_width="200dp"
+        android:layout_height="400dp"
+        android:src="@drawable/ic_device"
+        android:id="@+id/imageView3"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textView4" />
 
-    <LinearLayout
-        android:fitsSystemWindows="true"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/space_name"
+        android:textColor="@color/xiaomi_text_color"
+        android:textSize="@dimen/intro_fragment_extra_large_text"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/imageView3"
+        android:layout_centerHorizontal="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/welcome_to"
-            android:textSize="@dimen/intro_fragment_medium_text"
-            android:layout_marginTop="@dimen/text_top_padding"
-            android:layout_marginStart="@dimen/fragment_text_start_padding"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/space_name"
-            android:textSize="@dimen/intro_fragment_extra_large_text"
-            android:id="@+id/spaceNameView"
-            android:layout_marginTop="2dp"
-            android:layout_marginStart="@dimen/fragment_text_start_padding"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/space_subtitle"
-            android:textSize="@dimen/intro_fragment_medium_text"
-            android:id="@+id/spaceNameView2"
-            android:layout_marginTop="2dp"
-            android:layout_marginStart="@dimen/fragment_text_start_padding"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/space_pitch"
-            android:layout_marginTop="10dp"
-            android:id="@+id/descriptionTextView"
-            android:textSize="@dimen/intro_fragment_small_text"
-            android:layout_marginStart="@dimen/fragment_text_start_padding"
-            android:layout_marginEnd="@dimen/fragment_text_start_padding"/>
-
-    </LinearLayout>
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/space_subtitle"
+        android:textSize="19sp"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

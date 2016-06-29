@@ -3,13 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/imageView"
-        android:src="@drawable/bg2"
-        android:scaleType="fitXY"
-        android:layout_gravity="center"/>
 
     <LinearLayout
         android:fitsSystemWindows="true"
@@ -22,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/space_features_title"
-            android:textSize="28sp"
+            android:textSize="23sp"
             android:id="@+id/spaceNameView"
             android:layout_marginTop="@dimen/text_top_padding"
             />

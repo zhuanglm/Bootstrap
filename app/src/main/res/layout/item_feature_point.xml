@@ -18,6 +18,6 @@
         android:layout_height="wrap_content"
         android:paddingStart="5dp"
         android:text="@string/app_name"
-        android:textSize="@dimen/intro_fragment_small_text"
+        android:textSize="15sp"
         android:id="@+id/textView2" />
 </LinearLayout>

@@ -16,6 +16,9 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven {
+            url "${nexusUrl}/content/groups/public"
+        }
     }
 }
 
