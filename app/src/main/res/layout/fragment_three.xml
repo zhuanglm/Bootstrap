@@ -3,14 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/imageView"
-        android:src="@drawable/bg3"
-        android:scaleType="fitXY"
-        android:layout_gravity="center"/>
-
     <RelativeLayout
         android:fitsSystemWindows="true"
         android:orientation="vertical"
@@ -18,17 +10,18 @@
         android:layout_height="match_parent"
         android:layout_gravity="right|center_vertical">
 
+        <include layout="@layout/toolbar_back"
+            android:id="@+id/include" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/space_content_downloading"
             android:textSize="30sp"
             android:id="@+id/topTextView"
-            android:layout_marginTop="@dimen/text_top_padding"
-            android:layout_marginStart="@dimen/fragment_text_start_padding"
-            android:layout_marginEnd="@dimen/fragment_text_end_padding"
             android:gravity="center_horizontal"
-            />
+            android:layout_below="@+id/include"
+            android:layout_centerHorizontal="true" />
 
         <ProgressBar
             android:id="@+id/progressBar"

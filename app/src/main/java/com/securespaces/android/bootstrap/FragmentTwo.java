@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,6 +26,17 @@ public class FragmentTwo extends InsetFragment {
 
         mAdapter = new FeatureAdapter(getResources().getStringArray(R.array.space_features));
         listView.setAdapter(mAdapter);
+
+        ImageView backButton = (ImageView) mView.findViewById(R.id.backImage);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
+
+        TextView toolbarTitle = (TextView)mView.findViewById(R.id.toolbar_title);
+        toolbarTitle.setText(R.string.fragment2_title);
 
         return mView;
     }

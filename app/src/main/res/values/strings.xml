@@ -7,15 +7,10 @@
     <string name="next">Next</string>
 
     <!-- part 2 -->
+    <string name="fragment2_title">Space Information</string>
     <string name="space_pitch">Balance your professional and personal life with multiple Spaces.</string>
 
     <string name="space_features_title">What you can do with a Work Space:</string>
-
-    <!-- part 3 -->
-    <string name="space_content_downloading">Downloading Space content</string>
-    <string name="space_ready">Your Work Space is ready</string>
-    <string name="space_instructions">Tap the icon to switch between your personal and work Spaces.</string>
-    <string name="launch">Launch</string>
     <string-array name="space_features">
         <item>Keep your work apps and accounts separate from your personal apps and accounts.</item>
         <item>Switch between Spaces using different PINs.</item>
@@ -23,4 +18,14 @@
         <item>Let IT manage your Work Space and nothing else.</item>
         <item>Protect work data from malware and viruses.</item>
     </string-array>
+    <!-- part 3 -->
+    <string name="fragment3_title">Downloading</string>
+    <string name="space_content_downloading">Downloading Space content</string>
+    <string name="space_ready">Your Work Space is ready</string>
+    <string name="space_instructions">Tap the icon to switch between your personal and work Spaces.</string>
+    <string name="launch">Launch</string>
+
+    <!-- part 4 -->
+    <string name="fragment4_title">Work Space Ready</string>
+
 </resources>

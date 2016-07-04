@@ -1,35 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.securespaces.android.bootstrap.BootstrapActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:minHeight="?attr/actionBarSize"
-        android:layout_width="match_parent"
-        android:layout_height="194px"
-        app:titleTextColor="@android:color/white"
-        android:background="@color/xiaomi_toolbar_background">
-        <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/space_name"
-            android:textColor="@color/xiaomi_toolbar_text_color"
-            android:background="@android:color/transparent"
-            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-            android:paddingTop="20dp"
-            android:layout_gravity="center"/>
-    </android.support.v7.widget.Toolbar>
-
-    <android.support.v4.view.ViewPager
+    <FrameLayout
         android:id="@+id/container"
-        android:fitsSystemWindows="false"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
@@ -43,8 +22,4 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         style="@style/Xiaomi.Button" />
-
-
-
-
 </LinearLayout>

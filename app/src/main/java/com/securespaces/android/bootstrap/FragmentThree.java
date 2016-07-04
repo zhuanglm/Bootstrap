@@ -27,6 +27,17 @@ public class FragmentThree extends InsetFragment {
         mSwitchInstructionsTextView = (TextView)mView.findViewById(R.id.switchTextView);
         mSwitchIcon = (ImageView)mView.findViewById(R.id.imageView2);
 
+        ImageView backButton = (ImageView) mView.findViewById(R.id.backImage);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
+
+        TextView toolbarTitle = (TextView)mView.findViewById(R.id.toolbar_title);
+        toolbarTitle.setText(R.string.fragment3_title);
+
         return mView;
     }
 

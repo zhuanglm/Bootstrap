@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="194px"
+        app:titleTextColor="@android:color/white"
+        android:background="@color/xiaomi_toolbar_background">
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/space_name"
+            android:textColor="@color/xiaomi_toolbar_text_color"
+            android:background="@android:color/transparent"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:paddingTop="20dp"
+            android:layout_gravity="center"/>
+    </android.support.v7.widget.Toolbar>
+</LinearLayout>
