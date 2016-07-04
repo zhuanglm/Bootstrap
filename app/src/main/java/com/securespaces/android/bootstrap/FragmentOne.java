@@ -16,7 +16,8 @@ public class FragmentOne extends InsetFragment {
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_one, container, false);
 
-        setupInsetListener();
+        TextView toolbarTitle = (TextView)mView.findViewById(R.id.toolbar_title);
+        toolbarTitle.setText(R.string.space_name);
 
         return mView;
     }
