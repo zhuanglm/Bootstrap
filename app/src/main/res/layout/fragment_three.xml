@@ -21,9 +21,6 @@
         android:id="@+id/proceedButton"
         style="@style/Xiaomi.Button"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 

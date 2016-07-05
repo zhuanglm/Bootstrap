@@ -1,7 +1,7 @@
 package com.securespaces.android.bootstrap;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,42 +11,43 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-public class FragmentTwo extends InsetFragment {
+public class FragmentTwo extends Fragment {
     FeatureAdapter mAdapter;
+
+    public View.OnClickListener mBackListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            getActivity().onBackPressed();
+        }
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_two, container, false);
-        setupInsetListener();
+        View view = inflater.inflate(R.layout.fragment_two, container, false);
 
-        ListView listView = (ListView)mView.findViewById(R.id.listView);
+        ListView listView = (ListView)view.findViewById(R.id.listView);
 
         mAdapter = new FeatureAdapter(getResources().getStringArray(R.array.space_features));
         listView.setAdapter(mAdapter);
 
-        ImageView backButton = (ImageView) mView.findViewById(R.id.backImage);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().onBackPressed();
-            }
-        });
 
-        TextView toolbarTitle = (TextView)mView.findViewById(R.id.toolbar_title);
+        ImageView backButton = (ImageView) view.findViewById(R.id.backImage);
+        backButton.setOnClickListener(mBackListener);
+
+        TextView toolbarTitle = (TextView)view.findViewById(R.id.toolbar_title);
         toolbarTitle.setText(R.string.fragment2_title);
+        toolbarTitle.setOnClickListener(mBackListener);
 
-        Button proceedButton = (Button)mView.findViewById(R.id.proceedButton);
+        Button proceedButton = (Button)view.findViewById(R.id.proceedButton);
         proceedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((BootstrapActivity)getActivity()).switchFragment(1);
+                ((BootstrapActivity)getActivity()).onProceedPushed(1);
             }
         });
 
-        return mView;
+        return view;
     }
 
     public class FeatureAdapter extends BaseAdapter {

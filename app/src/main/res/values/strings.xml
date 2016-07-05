@@ -5,6 +5,7 @@
     <string name="welcome_to">Welcome to the</string>
     <string name="space_name">Work Space</string>
     <string name="next">Next</string>
+    <string name="fragment1_title">Welcome</string>
 
     <!-- part 2 -->
     <string name="fragment2_title">Space Information</string>
