@@ -31,8 +31,7 @@ public class BootstrapActivity extends AppCompatActivity {
     BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent.getData().getEncodedSchemeSpecificPart().equals(getTargetPackage())) {
-                Log.d("Eric","got the install intent");
+            if (intent.getData().getEncodedSchemeSpecificPart().equals(getTargetPackage(getApplicationContext()))) {
                 targetPackageFound();
             }
         }
@@ -50,7 +49,6 @@ public class BootstrapActivity extends AppCompatActivity {
         mFragments.add(new FragmentOne());
         mFragments.add(new FragmentTwo());
         mFragments.add(new FragmentThree());
-        //mFragments.add(new FragmentFour());
 
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
         intentFilter.addDataScheme("package");
@@ -73,29 +71,6 @@ public class BootstrapActivity extends AppCompatActivity {
         }
     }
 
-    private String getTargetPackage() {
-        return getString(R.string.target_package);
-    }
-    private void onProceedPushed() {
-        if (mCurrentPosition < FINAL_FRAGMENT) {
-            switchFragment(mFragments.get(mCurrentPosition + 1));
-            mCurrentPosition++;
-            //mViewPager.setCurrentItem(mCurrentPosition + 1, true);
-        } else if (mCurrentPosition == FINAL_FRAGMENT) {
-            try {
-                Intent intent = getPackageManager().getLaunchIntentForPackage(getTargetPackage());
-                if (intent != null) {
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                }
-            } catch (ActivityNotFoundException ex) {
-                //just close then
-                Log.e(TAG,"Unable to launch activity");
-            }
-            finish();
-        }
-    }
-
     public void switchFragment(int callingFragmentPosition) {
         switch (callingFragmentPosition) {
             case 0:
@@ -103,9 +78,6 @@ public class BootstrapActivity extends AppCompatActivity {
                 break;
             case 1:
                 switchFragment(mFragments.get(2));
-                break;
-            case 2:
-                //switchFragment(mFragments.get(3));
                 break;
         }
     }
@@ -124,16 +96,16 @@ public class BootstrapActivity extends AppCompatActivity {
                 .commit();
 
     }
-    private boolean canFindTargetPackage() {
-        return getPackageManager().getLaunchIntentForPackage(getTargetPackage()) != null;
+    public static boolean canFindTargetPackage(Context context) {
+        return context.getPackageManager().getLaunchIntentForPackage(getTargetPackage(context)) != null;
+    }
+
+    private static String getTargetPackage(Context context) {
+        //return "com.securespaces.android.xiaomitest.mi";
+        return context.getString(R.string.target_package);
     }
 
     private void targetPackageFound() {
-        //switchFragment(mFragments.get(mFragments.size()-1));
-        /*
-        mFragments.remove(2);
-        mFragments.add(new FragmentFour());
-        gotoFragment(mFragments.get(2));
-        */
+        ((FragmentThree)mFragments.get(2)).onTargetPackageFound();
     }
 }
