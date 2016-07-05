@@ -25,5 +25,16 @@
         android:dividerHeight="0dp"
         android:paddingStart="@dimen/fragment_text_start_padding"
         android:layout_gravity="center_horizontal" />
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        android:id="@+id/proceedButton"
+        style="@style/Xiaomi.Button"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </LinearLayout>

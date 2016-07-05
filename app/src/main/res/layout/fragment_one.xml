@@ -3,15 +3,16 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/toolbar" />
+    <include layout="@layout/toolbar"
+        android:id="@+id/include2" />
 
     <ImageView
         android:layout_width="200dp"
         android:layout_height="400dp"
         android:src="@drawable/ic_device"
         android:id="@+id/imageView3"
-        android:layout_centerVertical="true"
-        android:layout_alignEnd="@+id/textView4" />
+        android:layout_below="@+id/include2"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -30,5 +31,17 @@
         android:textSize="19sp"
         android:id="@+id/textView4"
         android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        android:id="@+id/proceedButton"
+        style="@style/Xiaomi.Button"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

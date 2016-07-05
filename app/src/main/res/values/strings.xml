@@ -20,12 +20,12 @@
     </string-array>
     <!-- part 3 -->
     <string name="fragment3_title">Downloading</string>
-    <string name="space_content_downloading">Downloading Space content</string>
+    <string name="space_content_downloading">Downloading Space content&#8230;</string>
     <string name="space_ready">Your Work Space is ready</string>
-    <string name="space_instructions">Tap the icon to switch between your personal and work Spaces.</string>
     <string name="launch">Launch</string>
 
     <!-- part 4 -->
     <string name="fragment4_title">Work Space Ready</string>
+    <string name="space_instructions">Tap the icon to switch between your personal and work Spaces.</string>
 
 </resources>

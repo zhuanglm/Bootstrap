@@ -38,6 +38,14 @@ public class FragmentTwo extends InsetFragment {
         TextView toolbarTitle = (TextView)mView.findViewById(R.id.toolbar_title);
         toolbarTitle.setText(R.string.fragment2_title);
 
+        Button proceedButton = (Button)mView.findViewById(R.id.proceedButton);
+        proceedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((BootstrapActivity)getActivity()).switchFragment(1);
+            }
+        });
+
         return mView;
     }
 

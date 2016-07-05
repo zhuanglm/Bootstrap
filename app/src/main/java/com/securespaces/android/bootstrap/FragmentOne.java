@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class FragmentOne extends InsetFragment {
@@ -18,6 +19,14 @@ public class FragmentOne extends InsetFragment {
 
         TextView toolbarTitle = (TextView)mView.findViewById(R.id.toolbar_title);
         toolbarTitle.setText(R.string.space_name);
+
+        Button proceedButton = (Button)mView.findViewById(R.id.proceedButton);
+        proceedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((BootstrapActivity)getActivity()).switchFragment(0);
+            }
+        });
 
         return mView;
     }

@@ -17,14 +17,14 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
-public class BootstrapActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
+public class BootstrapActivity extends AppCompatActivity {
     private static final String TAG = "Bootstrap";
     private static final int FINAL_FRAGMENT = 2;
 
     // com.securespaces.android.xiaomitest.mi
     // com.nq.mdm
 
-    private ArrayList<InsetFragment> mFragments;
+    private ArrayList<Fragment> mFragments;
     private Button mProceedButton;
     private int mCurrentPosition;
 
@@ -32,9 +32,8 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getData().getEncodedSchemeSpecificPart().equals(getTargetPackage())) {
-                if (mProceedButton != null) {
-                    targetPackageFound();
-                }
+                Log.d("Eric","got the install intent");
+                targetPackageFound();
             }
         }
     };
@@ -47,34 +46,17 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
                  | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         setContentView(R.layout.activity_bootstrap);
 
-        mProceedButton = (Button)findViewById(R.id.proceedButton);
-        mProceedButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onProceedPushed();
-            }
-        });
-
         mFragments = new ArrayList<>();
         mFragments.add(new FragmentOne());
         mFragments.add(new FragmentTwo());
         mFragments.add(new FragmentThree());
-
-
+        //mFragments.add(new FragmentFour());
 
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
-        intentFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
-        intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
         intentFilter.addDataScheme("package");
         registerReceiver(mBroadcastReceiver, intentFilter);
 
         gotoFragment(mFragments.get(0));
-
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-        }
     }
 
     @Override
@@ -114,6 +96,20 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
         }
     }
 
+    public void switchFragment(int callingFragmentPosition) {
+        switch (callingFragmentPosition) {
+            case 0:
+                switchFragment(mFragments.get(1));
+                break;
+            case 1:
+                switchFragment(mFragments.get(2));
+                break;
+            case 2:
+                //switchFragment(mFragments.get(3));
+                break;
+        }
+    }
+
     private void gotoFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
@@ -133,32 +129,11 @@ public class BootstrapActivity extends AppCompatActivity implements ViewPager.On
     }
 
     private void targetPackageFound() {
-        mProceedButton.setEnabled(true);
-        ((FragmentThree)mFragments.get(FINAL_FRAGMENT)).targetApkFound();
-    }
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-        mCurrentPosition = position;
-        if (position == FINAL_FRAGMENT) {
-            mProceedButton.setText(R.string.launch);
-            if (canFindTargetPackage()) {
-                targetPackageFound();
-            } else {
-                mProceedButton.setEnabled(false);
-            }
-        } else {
-            mProceedButton.setText(R.string.next);
-            mProceedButton.setEnabled(true);
-        }
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
+        //switchFragment(mFragments.get(mFragments.size()-1));
+        /*
+        mFragments.remove(2);
+        mFragments.add(new FragmentFour());
+        gotoFragment(mFragments.get(2));
+        */
     }
 }

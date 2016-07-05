@@ -2,33 +2,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <include layout="@layout/toolbar_back"
         android:id="@+id/include" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLarge"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:paddingTop="10dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_above="@+id/topTextView"
+        android:id="@+id/imageView"
+        android:src="@drawable/ic_switch"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_below="@+id/include"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="72dp">
-    </ProgressBar>
+        android:layout_marginTop="102dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/space_content_downloading"
-        android:textSize="20sp"
-        android:id="@+id/topTextView"
-        android:gravity="center_horizontal"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
+        android:text="@string/space_instructions"
+        android:id="@+id/textView5"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:gravity="center"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,5 +39,4 @@
         android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
-
 </RelativeLayout>
