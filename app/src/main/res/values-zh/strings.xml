@@ -25,4 +25,8 @@
     <string name="space_instructions">点击图标，您可以私人空间和工作空间中来回切换</string>
     <string name="launch">启动</string>
     <string name="space_content_downloading">正在加载空间内容</string>
+    <string name="fragment1_title">欢迎来到空间</string>
+    <string name="fragment2_title">空间信息</string>
+    <string name="fragment3_title">下载中</string>
+    <string name="fragment4_title">工作空间已就绪</string>
 </resources>
