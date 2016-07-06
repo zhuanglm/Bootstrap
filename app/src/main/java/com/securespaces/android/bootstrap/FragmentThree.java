@@ -50,14 +50,8 @@ public class FragmentThree extends Fragment {
             mProgressBar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.colorPrimaryDark), PorterDuff.Mode.MULTIPLY);
 
             mToolbarTitle.setText(R.string.fragment3_title);
-            //TODO: switch back to disabling this button
-            //mProceedButton.setEnabled(false);
-            mProceedButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onTargetPackageFound();
-                }
-            });
+
+            mProceedButton.setEnabled(false);
         } else {
             setupSpaceReadyView();
         }

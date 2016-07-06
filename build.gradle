@@ -9,7 +9,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.2'
-        //classpath 'com.securespaces.plugin:signing-gradle-plugin:1.+'
+        classpath 'com.securespaces.plugin:signing-gradle-plugin:1.+'
     }
 }
 
