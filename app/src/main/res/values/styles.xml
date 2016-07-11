@@ -6,7 +6,5 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/xiaomi_toolbar_background</item>
         <item name="colorAccent">@color/colorAccent</item>
-
-        <item name="android:background">@color/xiaomi_background_color</item>
     </style>
 </resources>

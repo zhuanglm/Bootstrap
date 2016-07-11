@@ -15,6 +15,4 @@
     <dimen name="intro_fragment_large_text">36sp</dimen>
     <dimen name="intro_fragment_medium_text">28sp</dimen>
     <dimen name="intro_fragment_small_text">17sp</dimen>
-
-    <integer name="animation_time">200</integer>
 </resources>
