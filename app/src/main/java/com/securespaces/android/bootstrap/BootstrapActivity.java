@@ -36,8 +36,7 @@ public class BootstrapActivity extends AppCompatActivity {
 
         mFragments = new ArrayList<>();
         mFragments.add(new FragmentOne());
-        mFragments.add(new FragmentTwo());
-        mFragments.add(new FragmentThree());
+        mFragments.add(new RecommendedAppsFragment());
 
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
         intentFilter.addDataScheme("package");
@@ -53,13 +52,8 @@ public class BootstrapActivity extends AppCompatActivity {
     }
 
     public void onProceedPushed(int callingFragmentPosition) {
-        switch (callingFragmentPosition) {
-            case 0:
-                switchFragmentAnimated(mFragments.get(1));
-                break;
-            case 1:
-                switchFragmentAnimated(mFragments.get(2));
-                break;
+        if (callingFragmentPosition < mFragments.size() - 1) {
+            switchFragmentAnimated(mFragments.get(callingFragmentPosition+1));
         }
     }
 

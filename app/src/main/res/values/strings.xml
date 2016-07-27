@@ -29,4 +29,8 @@
     <string name="fragment4_title">Work Space Ready</string>
     <string name="space_instructions">Tap the icon to switch between your personal and work Space.</string>
 
+    <!-- recommended apps -->
+    <string name="recommended_apps_title1">Downloading</string>
+    <string name="recommended_apps_title2">Work Space Ready</string>
+
 </resources>

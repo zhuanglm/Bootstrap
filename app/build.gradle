@@ -45,5 +45,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.+'
     compile 'com.android.support:design:23.+'
+    compile 'com.securespaces.android.sdk:SecureSpacesSDK:4.2.0-SNAPSHOT:internalRelease@aar'
     compile ('com.securespaces.android.sdk:SpaceAppLibrary:10.0.08-SNAPSHOT@aar')
 }
