@@ -20,14 +20,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    productFlavors {
-        nationsky {
-            applicationId "com.securespaces.android.bootstrap.nationsky"
-        }
-        thundersoft {
-            applicationId "com.securespaces.android.bootstrap.thundersoft"
-        }
-    }
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
             output.outputFile = new File(
@@ -45,6 +37,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.+'
     compile 'com.android.support:design:23.+'
-    compile 'com.securespaces.android.sdk:SecureSpacesSDK:4.2.0-SNAPSHOT:internalRelease@aar'
-    compile ('com.securespaces.android.sdk:SpaceAppLibrary:10.0.08-SNAPSHOT@aar')
+    compile 'com.securespaces.android.sdk:SecureSpacesSDK:4.2.0:internalRelease@aar'
+    compile project(':SpaceAppLibrary')
+    //compile ('com.securespaces.android.sdk:SpaceAppLibrary:10.0.08-SNAPSHOT@aar')
 }

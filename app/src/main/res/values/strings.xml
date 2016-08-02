@@ -5,7 +5,7 @@
     <string name="welcome_to">Welcome to the</string>
     <string name="space_name">Work Space</string>
     <string name="next">Next</string>
-    <string name="fragment1_title">Welcome</string>
+    <string name="fragment1_title">Work Space</string>
 
     <!-- part 2 -->
     <string name="fragment2_title">Space Information</string>
@@ -33,4 +33,11 @@
     <string name="recommended_apps_title1">Downloading</string>
     <string name="recommended_apps_title2">Work Space Ready</string>
 
+    <!-- EMM -->
+    <string name="emm_select_title">Select your EMM</string>
+    <string name="emm_instructions">Please select the Enterprise Mobility Management tool used by your company.
+        If you do not know which EMM to select please contact your technical administrator or skip if you do not use an EMM.</string>
+    <string name="skip">Skip</string>
+    <string name="thundersoft">Thundersoft</string>
+    <string name="nationsky">Nation Sky</string>
 </resources>

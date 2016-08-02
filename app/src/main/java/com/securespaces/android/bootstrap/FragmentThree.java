@@ -13,7 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 /**
- * Created by eric on 15/06/16.
+ * This entire fragment is deprecated, and is just here for code references during the rebuilding.
  */
 public class FragmentThree extends Fragment {
     private static final int STATE_PACKAGE_NOT_FOUND = 0;
@@ -40,8 +40,8 @@ public class FragmentThree extends Fragment {
         mToolbarTitle = (TextView)view.findViewById(R.id.toolbar_title);
         mProceedButton = (Button)view.findViewById(R.id.proceedButton);
         mContainer = (FrameLayout)view.findViewById(R.id.subContainer);
-
-        if (!BootstrapActivity.canFindTargetPackage(getActivity())) {
+/*
+        if (canFindTargetPackage(getActivity())) {
             mState = STATE_PACKAGE_NOT_FOUND;
             View subView = inflater.inflate(R.layout.subfragment1, container, false);
             mContainer.addView(subView);
@@ -55,7 +55,7 @@ public class FragmentThree extends Fragment {
         } else {
             setupSpaceReadyView();
         }
-
+*/
         ImageView backButton = (ImageView) view.findViewById(R.id.backImage);
         backButton.setOnClickListener(mBackListener);
         mToolbarTitle.setOnClickListener(mBackListener);

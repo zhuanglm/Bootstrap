@@ -24,35 +24,34 @@ import android.widget.TextView;
 /**
  * Created by eric on 26/07/16.
  */
-public class RecommendedAppsFragment extends Fragment implements IWebErrorHandler {
+public class RecommendedAppsFragment extends BootstrapFragment implements IWebErrorHandler, IFinalFragment {
+    Button mProceedButton;
 
     private static final String SS_URL_PARTIAL_PREFIX1 = "securespaces.com/generateSpace";
     private static final String SS_URL_PARTIAL_PREFIX2 = "securespaces.com/registerSpace";
 
-    public View.OnClickListener mBackListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            getActivity().onBackPressed();
-        }
-    };
+    public static RecommendedAppsFragment newInstance(int position) {
+        Bundle args = new Bundle();
+        args.putInt(BootstrapFragment.KEY_POSITION, position);
+        RecommendedAppsFragment fragment = new RecommendedAppsFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recommended_apps, container, false);
 
-        ImageView backButton = (ImageView) view.findViewById(R.id.backImage);
-        backButton.setOnClickListener(mBackListener);
+        unpackBundle();
+        setReturnListeners(view);
+        mToolbarTitle.setText(R.string.recommended_apps_title1);
 
-        TextView toolbarTitle = (TextView)view.findViewById(R.id.toolbar_title);
-        toolbarTitle.setText(R.string.recommended_apps_title1);
-        toolbarTitle.setOnClickListener(mBackListener);
-
-        Button proceedButton = (Button)view.findViewById(R.id.proceedButton);
-        proceedButton.setOnClickListener(new View.OnClickListener() {
+        mProceedButton = (Button)view.findViewById(R.id.proceedButton);
+        mProceedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((BootstrapActivity)getActivity()).onProceedPushed(1);
+                onProceed();
             }
         });
 
@@ -111,6 +110,12 @@ public class RecommendedAppsFragment extends Fragment implements IWebErrorHandle
         webView.loadUrl(webViewClient.getRecommendedAppsUrl());
 
         return view;
+    }
+
+    @Override
+    public void onTargetPackageFound() {
+        mToolbarTitle.setText(R.string.recommended_apps_title2);
+        mProceedButton.setEnabled(true);
     }
 
     @Override

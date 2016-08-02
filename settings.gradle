@@ -1,1 +1,4 @@
 include ':app'
+
+include ':SpaceAppLibrary'
+project(':SpaceAppLibrary').projectDir = new File(settingsDir, '../../space-apps/SpaceAppLibrary/app')

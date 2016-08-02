@@ -10,6 +10,7 @@
         android:layout_weight="1">
         <WebView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/web_view"
+            android:background="@color/xiaomi_background_color"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </FrameLayout>
@@ -21,6 +22,7 @@
         android:id="@+id/proceedButton"
         style="@style/Xiaomi.Button"
         android:layout_marginTop="10dp"
+        android:enabled="false"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 </LinearLayout>

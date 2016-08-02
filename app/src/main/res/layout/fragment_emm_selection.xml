@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar_back"
+        android:id="@+id/include3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/emm_instructions"
+        android:paddingTop="@dimen/fragment_text_end_padding"
+        android:paddingStart="@dimen/fragment_text_start_padding"
+        android:paddingEnd="@dimen/fragment_text_end_padding"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/include3"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/ic_device"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="@string/thundersoft"
+        android:id="@+id/thundersoftButton"
+        style="@style/Xiaomi.Button"
+        android:layerType="none"
+        android:layout_marginBottom="5dp"
+        android:layout_above="@+id/nationskyButton"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:layout_width="match_parent"
+        android:text="@string/nationsky"
+        android:id="@+id/nationskyButton"
+        style="@style/Xiaomi.Button"
+        android:layerType="none"
+        android:layout_marginBottom="5dp"
+        android:layout_above="@+id/skipButton"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:layout_width="match_parent"
+        android:text="@string/skip"
+        android:id="@+id/skipButton"
+        style="@style/Xiaomi.Button"
+        android:layerType="none"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
+
