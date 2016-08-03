@@ -1,7 +1,14 @@
 package com.securespaces.android.bootstrap;
 
 import android.app.Activity;
+import android.app.DownloadManager;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
@@ -58,6 +65,7 @@ public class RecommendedAppsWebViewClient extends WebViewClient {
     }
 
     public String getRecommendedAppsUrl() {
+        /*
         SystemUtils systemUtils = new SystemUtils();
         String url = systemUtils.getSystemProperty(RECOMMENDED_URL_OVERWRITE_PROPERTY,"");
         if ((url == null) || url.isEmpty()) {
@@ -75,6 +83,20 @@ public class RecommendedAppsWebViewClient extends WebViewClient {
             }
         }
         return url;
+        */
+        return "http://www.securespaces.com/download.html";
+    }
+
+    @Override
+    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        if (url.endsWith(".apk")) {
+            // launch dat service!
+            Intent intent = new Intent(mContext, AppInstallService.class);
+            intent.putExtra(AppInstallService.EXTRA_DOWNLOAD_URL, url);
+            mContext.startService(intent);
+        }
+
+        return true;
     }
 
     @Override

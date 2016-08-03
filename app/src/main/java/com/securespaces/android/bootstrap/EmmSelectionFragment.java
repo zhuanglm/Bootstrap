@@ -1,6 +1,8 @@
 package com.securespaces.android.bootstrap;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.Button;
  * Created by eric on 02/08/16.
  */
 public class EmmSelectionFragment extends BootstrapFragment {
+    Button mNationskyButton, mThundersoftButton, mSkipButton;
 
     public static EmmSelectionFragment newInstance(int position) {
         Bundle args = new Bundle();
@@ -29,30 +32,43 @@ public class EmmSelectionFragment extends BootstrapFragment {
 
         mToolbarTitle.setText(R.string.emm_select_title);
 
-        Button skipButton = (Button)view.findViewById(R.id.skipButton);
-        skipButton.setOnClickListener(new View.OnClickListener() {
+        mSkipButton = (Button)view.findViewById(R.id.skipButton);
+        mSkipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onProceed();
             }
         });
 
-        Button nationskyButton = (Button)view.findViewById(R.id.nationskyButton);
-        nationskyButton.setOnClickListener(new View.OnClickListener() {
+        mNationskyButton = (Button)view.findViewById(R.id.nationskyButton);
+        mNationskyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getBootstrapActivity().onEmmChosen(BootstrapActivity.EMM_NATIONSKY);
+                onProceed();
             }
         });
 
-        Button thundersoftButton = (Button)view.findViewById(R.id.thundersoftButton);
-        thundersoftButton.setOnClickListener(new View.OnClickListener() {
+        mThundersoftButton = (Button)view.findViewById(R.id.thundersoftButton);
+        mThundersoftButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getBootstrapActivity().onEmmChosen(BootstrapActivity.EMM_THUNDERSOFT);
+                onProceed();
             }
         });
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        if (!prefs.getString(BootstrapActivity.KEY_CHOSEN_EMM, "").equals("")) {
+            emmAlreadyChosen();
+        }
+
         return view;
+    }
+
+    private void emmAlreadyChosen() {
+        mSkipButton.setText(R.string.button_continue);
+        mNationskyButton.setEnabled(false);
+        mThundersoftButton.setEnabled(false);
     }
 }

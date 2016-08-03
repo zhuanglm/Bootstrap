@@ -1,6 +1,8 @@
 package com.securespaces.android.bootstrap;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -51,14 +53,16 @@ public class RecommendedAppsFragment extends BootstrapFragment implements IWebEr
         mProceedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onProceed();
+                if (getBootstrapActivity().canFindTargetPackage()) {
+                    startActivity(getBootstrapActivity().getTargetPackageLaunchIntent());
+                }
+                getActivity().finish();
             }
         });
 
         RecommendedAppsWebViewClient webViewClient = new RecommendedAppsWebViewClient(getActivity(), R.integer.grid_view_cols, R.integer.grid_view_rows, RecommendedAppsWebViewClient.TYPE_MORE_SPACES, this);
         WebView webView = (WebView)view.findViewById(R.id.web_view);
         webView.setWebViewClient(webViewClient);
-
 
         webView.setWebChromeClient(new WebChromeClient() {
             public boolean onCreateWindow(WebView view, boolean dialog, boolean userGesture, android.os.Message resultMsg) {
@@ -70,28 +74,6 @@ public class RecommendedAppsFragment extends BootstrapFragment implements IWebEr
                 transport.setWebView(newWebView);
                 resultMsg.sendToTarget();
 
-                newWebView.setWebViewClient(new WebViewClient() {
-                    @Override
-                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                        if (!TextUtils.isEmpty(url)) {
-                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                            startActivity(intent);
-                            /*)
-                            if (url.contains(SS_URL_PARTIAL_PREFIX1)
-                                    || url.contains(SS_URL_PARTIAL_PREFIX2)) {
-
-                                // we will handle creating our space because we don't want
-                                // to launch the Navigator activity
-                                onDownloadSpace(url);
-                            } else {
-                                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                                startActivity(intent);
-                            }
-                            */
-                        }
-                        return true;
-                    }
-                });
                 return true;
             }
         });
@@ -109,13 +91,22 @@ public class RecommendedAppsFragment extends BootstrapFragment implements IWebEr
         }
         webView.loadUrl(webViewClient.getRecommendedAppsUrl());
 
+        if (getBootstrapActivity().getTargetPackage().equals(BootstrapActivity.EMM_NONE)) {
+            mProceedButton.setEnabled(true);
+        } else if (getBootstrapActivity().canFindTargetPackage()) {
+            onTargetPackageFound();
+        }
         return view;
     }
 
     @Override
     public void onTargetPackageFound() {
-        mToolbarTitle.setText(R.string.recommended_apps_title2);
-        mProceedButton.setEnabled(true);
+        if (mToolbarTitle != null) {
+            mToolbarTitle.setText(R.string.recommended_apps_title2);
+        }
+        if (mProceedButton != null) {
+            mProceedButton.setEnabled(true);
+        }
     }
 
     @Override

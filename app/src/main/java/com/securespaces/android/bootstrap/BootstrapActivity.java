@@ -22,8 +22,9 @@ public class BootstrapActivity extends AppCompatActivity {
     private static final String TAG = BootstrapActivity.class.getSimpleName();
     public static final String EMM_THUNDERSOFT = "com.thundersoft.mdm";
     public static final String EMM_NATIONSKY = "com.nq.mdm";
+    public static final String EMM_NONE = "";
+    public static final String KEY_CHOSEN_EMM = "key_chosen_emm";
 
-    private static final String KEY_CHOSEN_EMM = "key_chosen_emm";
 
     private ArrayList<Fragment> mFragments;
     private SpacesManager mSpacesManager;
@@ -32,7 +33,7 @@ public class BootstrapActivity extends AppCompatActivity {
     BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent.getData().getEncodedSchemeSpecificPart().equals(getTargetPackage(getApplicationContext()))) {
+            if (intent.getData().getEncodedSchemeSpecificPart().equals(getTargetPackage())) {
                 targetPackageFound();
             }
         }
@@ -87,15 +88,18 @@ public class BootstrapActivity extends AppCompatActivity {
                 .commit();
 
     }
-    public boolean canFindTargetPackage(Context context) {
-        return context.getPackageManager().getLaunchIntentForPackage(getTargetPackage(context)) != null;
+    public boolean canFindTargetPackage() {
+        return getTargetPackageLaunchIntent() != null;
     }
 
-    private String getTargetPackage(Context context) {
+    public Intent getTargetPackageLaunchIntent() {
+        return getPackageManager().getLaunchIntentForPackage(getTargetPackage());
+    }
+    public String getTargetPackage() {
         // this is useful for testing purposes
         //return "com.securespaces.android.xiaomitest.mi";
         //return context.getString(R.string.target_package);
-        return mSharedPrefs.getString(KEY_CHOSEN_EMM,"");
+        return mSharedPrefs.getString(KEY_CHOSEN_EMM,EMM_NONE);
     }
 
     private void targetPackageFound() {

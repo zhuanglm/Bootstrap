@@ -11,8 +11,8 @@ android {
         applicationId "com.securespaces.android.bootstrap"
         minSdkVersion 22
         targetSdkVersion 22
-        versionCode 9
-        versionName "1.08"
+        versionCode 12
+        versionName "1.11"
     }
     buildTypes {
         release {
