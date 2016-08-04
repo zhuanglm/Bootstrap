@@ -14,7 +14,6 @@
     <string name="space_features_title">What you can do with a Work Space:</string>
     <string-array name="space_features">
         <item>Keep your work apps and accounts separate from your personal apps and accounts.</item>
-        <item>Switch between Spaces using different PINs.</item>
         <item>Information is encrypted in each Space.</item>
         <item>Let IT manage your Work Space and nothing else.</item>
         <item>Protect work data from malware and viruses.</item>
@@ -35,9 +34,10 @@
 
     <!-- EMM -->
     <string name="emm_select_title">Select your EMM</string>
-    <string name="emm_instructions">Please select the Enterprise Mobility Management tool used by your company.
-        If you do not know which EMM to select please contact your technical administrator or skip if you do not use an EMM.</string>
+    <string name="emm_instructions">Please select the Enterprise Mobility Management tool used by your company.</string>
     <string name="skip">Skip</string>
+    <string name="start">Start</string>
     <string name="thundersoft">Thundersoft</string>
     <string name="nationsky">Nation Sky</string>
+    <string name="no_emm">I don\'t know my EMM</string>
 </resources>

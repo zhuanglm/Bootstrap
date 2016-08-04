@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -13,14 +14,18 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.securespaces.android.ssm.SpaceIntent;
+import com.securespaces.android.ssm.SpacesManager;
+
 import java.io.File;
 import java.util.HashSet;
 
 /**
- * Created by eric on 03/08/16.
+ * Handles the downloading and installation of recommended apps selected by the user.
  */
 public class AppInstallService extends Service {
     public static final String EXTRA_DOWNLOAD_URL = "extra_download_url";
+    private static final String MIME_APK = "application/vnd.android.package-archive";
 
     private HashSet<Long> mDownloadIds;
     private DownloadManager mDownloadManager;
@@ -29,7 +34,6 @@ public class AppInstallService extends Service {
         @Override
         public void onReceive(Context context, Intent intent) {
             long downloadId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, 0);
-            Log.d("Eric","downloadComplete, id is " + downloadId);
             if (mDownloadIds.contains(downloadId)) {
                 onDownloadComplete(downloadId);
             }
@@ -61,57 +65,61 @@ public class AppInstallService extends Service {
             return START_STICKY;
         }
         Uri source = Uri.parse(url);
-        // Make a new request pointing to the .apk url
         DownloadManager.Request request = new DownloadManager.Request(source);
-        // appears the same in Notification bar while downloading
-        request.setDescription("Description for the DownloadManager Bar");
-        request.setTitle("YourApp.apk");
+        request.setMimeType(MIME_APK);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             request.allowScanningByMediaScanner();
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         }
-        // save the file in the "Downloads" folder of SDCARD
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "SmartPigs.apk");
-        // get download service and enqueue file
+        String[] segments = source.getPath().split("/");
+        String fileName = segments[segments.length-1];
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
         mDownloadIds.add(mDownloadManager.enqueue(request));
-
 
         return START_STICKY;
     }
 
     private void onDownloadComplete(long downloadId) {
-        Uri downloadUri = mDownloadManager.getUriForDownloadedFile(downloadId);
-
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.fromFile(new File(downloadUri.getPath())), "application/vnd.android.package-archive");
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        /*
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            // Prevents the occasional unintentional call. I needed this.
-            if (mDownloadedFileID == -1)
-                return;
-            Intent fileIntent = new Intent(Intent.ACTION_VIEW);
-
-            // Grabs the Uri for the file that was downloaded.
-            Uri mostRecentDownload =
-                    mDownloadManager.getUriForDownloadedFile(mDownloadedFileID);
-            // DownloadManager stores the Mime Type. Makes it really easy for us.
-            String mimeType =
-                    mDownloadManager.getMimeTypeForDownloadedFile(mDownloadedFileID);
-            fileIntent.setDataAndType(mostRecentDownload, mimeType);
-            fileIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            try {
-                mContext.startActivity(fileIntent);
-            } catch (ActivityNotFoundException e) {
-                Toast.makeText(mContext, "No handler for this type of file.",
-                        Toast.LENGTH_LONG).show();
-            }
-            // Sets up the prevention of an unintentional call. I found it necessary. Maybe not for others.
-            mDownloadedFileID = -1;
+        Uri downloadUri = null;
+        // get the path of the downloaded file
+        DownloadManager.Query query = new DownloadManager.Query();
+        query.setFilterById(downloadId);
+        Cursor cursor = mDownloadManager.query(query);
+        if (cursor == null) {
+            //abort, something has gone terribly wrong
+            return;
         }
-        */
+
+        try {
+            if (!cursor.moveToFirst()) {
+                //abort, something has gone terribly wrong
+                return;
+            }
+            int columnIndex = cursor.getColumnIndex(DownloadManager.COLUMN_STATUS);
+            if (DownloadManager.STATUS_SUCCESSFUL == cursor.getInt(columnIndex)) {
+                String uriString = cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
+                Uri uri = Uri.parse(uriString);
+                downloadUri = uri;
+            } else {
+                return;
+            }
+        } finally {
+            cursor.close();
+        }
+
+        File file = new File(downloadUri.getPath());
+
+        // in sdk16 or higher, we can use SpacesManager to install the app without asking the user.
+        String requiredSdkVersion = "com.securespaces.android.sdk16";
+        if (getPackageManager().hasSystemFeature(requiredSdkVersion)) {
+            SpacesManager spacesManager = new SpacesManager(this);
+            spacesManager.installApp(file.getAbsolutePath());
+        } else {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(Uri.fromFile(file), MIME_APK);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
     }
 
     @Nullable

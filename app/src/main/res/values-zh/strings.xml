@@ -14,7 +14,6 @@
 
     <string-array name="space_features">
         <item>将工作应用账号与您的私人应用账号隔离开来</item>
-        <item>使用不同的密码在空间中来回切换</item>
         <item>各个空间中的信息独立加密</item>
         <item>IT管理员仅可以管理您的工作空间</item>
         <item>防止恶意软件或病毒侵袭</item>
@@ -29,4 +28,13 @@
     <string name="fragment2_title">空间信息</string>
     <string name="fragment3_title">下载中</string>
     <string name="fragment4_title">工作空间已就绪</string>
+    <string name="recommended_apps_title1">下载中</string>
+    <string name="recommended_apps_title2">工作空间已就绪</string>
+    <string name="skip">跳过</string>
+    <string name="thundersoft">中科创达</string>
+    <string name="nationsky">国信灵通</string>
+    <string name="emm_select_title">选择EMM</string>
+    <string name="emm_instructions">请选择贵司使用的企业移动化管理工具。如果您不了解</string>
+    <string name="no_emm">TBT</string>
+    <string name="start">TBT</string>
 </resources>

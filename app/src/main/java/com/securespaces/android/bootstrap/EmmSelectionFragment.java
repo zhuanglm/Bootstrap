@@ -12,7 +12,7 @@ import android.widget.Button;
  * Created by eric on 02/08/16.
  */
 public class EmmSelectionFragment extends BootstrapFragment {
-    Button mNationskyButton, mThundersoftButton, mSkipButton;
+    Button mNationskyButton, mThundersoftButton, mSkipButton, mNoEmmButton;
 
     public static EmmSelectionFragment newInstance(int position) {
         Bundle args = new Bundle();
@@ -34,6 +34,14 @@ public class EmmSelectionFragment extends BootstrapFragment {
 
         mSkipButton = (Button)view.findViewById(R.id.skipButton);
         mSkipButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onProceed();
+            }
+        });
+
+        mNoEmmButton = (Button)view.findViewById(R.id.continueButton);
+        mNoEmmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onProceed();

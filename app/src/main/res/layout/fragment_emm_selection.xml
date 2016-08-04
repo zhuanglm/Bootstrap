@@ -17,14 +17,6 @@
         android:layout_below="@+id/include3"
         android:layout_centerHorizontal="true" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@drawable/ic_emm_phone"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
     <Button
         android:layout_width="match_parent"
         android:text="@string/thundersoft"
@@ -41,6 +33,23 @@
         style="@style/Xiaomi.Button"
         android:layerType="none"
         android:layout_marginBottom="5dp"
+        android:layout_above="@+id/continueButton"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:layout_width="match_parent"
+        android:text="@string/no_emm"
+        style="@style/Xiaomi.Button"
+        android:layerType="none"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/continueButton"
+        android:layout_above="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/ic_emm_phone"
+        android:layout_marginBottom="35dp"
         android:layout_above="@+id/skipButton"
         android:layout_centerHorizontal="true" />
     <Button

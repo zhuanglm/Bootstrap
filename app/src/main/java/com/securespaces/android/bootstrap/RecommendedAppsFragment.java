@@ -29,9 +29,6 @@ import android.widget.TextView;
 public class RecommendedAppsFragment extends BootstrapFragment implements IWebErrorHandler, IFinalFragment {
     Button mProceedButton;
 
-    private static final String SS_URL_PARTIAL_PREFIX1 = "securespaces.com/generateSpace";
-    private static final String SS_URL_PARTIAL_PREFIX2 = "securespaces.com/registerSpace";
-
     public static RecommendedAppsFragment newInstance(int position) {
         Bundle args = new Bundle();
         args.putInt(BootstrapFragment.KEY_POSITION, position);
@@ -60,23 +57,9 @@ public class RecommendedAppsFragment extends BootstrapFragment implements IWebEr
             }
         });
 
-        RecommendedAppsWebViewClient webViewClient = new RecommendedAppsWebViewClient(getActivity(), R.integer.grid_view_cols, R.integer.grid_view_rows, RecommendedAppsWebViewClient.TYPE_MORE_SPACES, this);
+        RecommendedAppsWebViewClient webViewClient = new RecommendedAppsWebViewClient(getActivity(), this);
         WebView webView = (WebView)view.findViewById(R.id.web_view);
         webView.setWebViewClient(webViewClient);
-
-        webView.setWebChromeClient(new WebChromeClient() {
-            public boolean onCreateWindow(WebView view, boolean dialog, boolean userGesture, android.os.Message resultMsg) {
-
-                WebView newWebView = new WebView(view.getContext());
-                newWebView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 0));
-                view.addView(newWebView);
-                WebView.WebViewTransport transport = (WebView.WebViewTransport) resultMsg.obj;
-                transport.setWebView(newWebView);
-                resultMsg.sendToTarget();
-
-                return true;
-            }
-        });
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setSupportMultipleWindows(true);
@@ -93,6 +76,7 @@ public class RecommendedAppsFragment extends BootstrapFragment implements IWebEr
 
         if (getBootstrapActivity().getTargetPackage().equals(BootstrapActivity.EMM_NONE)) {
             mProceedButton.setEnabled(true);
+            mProceedButton.setText(R.string.start);
         } else if (getBootstrapActivity().canFindTargetPackage()) {
             onTargetPackageFound();
         }
