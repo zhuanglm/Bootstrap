@@ -22,6 +22,6 @@
     <string name="nationsky">国信灵通</string>
     <string name="emm_select_title">选择EMM</string>
     <string name="emm_instructions">请选择贵司使用的企业移动化管理工具。如果您不了解</string>
-    <string name="no_emm">TBT</string>
-    <string name="start">TBT</string>
+    <string name="no_emm">不清楚公司使用的EMM</string>
+    <string name="start">开始</string>
 </resources>
