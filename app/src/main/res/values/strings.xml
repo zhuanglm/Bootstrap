@@ -2,14 +2,10 @@
     <string name="app_name">Bootstrap</string>
 
     <!-- part 1 -->
-    <string name="welcome_to">Welcome to the</string>
-    <string name="space_name">Work Space</string>
     <string name="next">Next</string>
     <string name="fragment1_title">Work Space</string>
 
     <!-- part 2 -->
-    <string name="fragment2_title">Space Information</string>
-    <string name="space_pitch">Balance your professional and personal life with multiple Spaces.</string>
 
     <string name="space_features_title">What you can do with a Work Space:</string>
     <string-array name="space_features">
@@ -19,14 +15,9 @@
         <item>Protect work data from malware and viruses.</item>
     </string-array>
     <!-- part 3 -->
-    <string name="fragment3_title">Downloading</string>
-    <string name="space_content_downloading">Downloading Space content&#8230;</string>
-    <string name="space_ready">Your Work Space is ready</string>
     <string name="launch">Launch</string>
 
     <!-- part 4 -->
-    <string name="fragment4_title">Work Space Ready</string>
-    <string name="space_instructions">Tap the icon to switch between your personal and work Space.</string>
 
     <!-- recommended apps -->
     <string name="recommended_apps_title1">Downloading</string>

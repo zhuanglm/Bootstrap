@@ -2,14 +2,7 @@
 <resources>
     <string name="app_name">初始引导</string>
 
-    <!-- part 1 -->
-    <string name="welcome_to">欢迎来到</string>
-    <string name="space_name">工作空间</string>
     <string name="next">下一步</string>
-
-    <!-- part 2 -->
-    <string name="space_pitch">利用多空间，平衡您的工作和生活</string>
-
     <string name="space_features_title">工作空间可以为您提供：</string>
 
     <string-array name="space_features">
@@ -20,14 +13,8 @@
     </string-array>
 
     <!-- part 3 -->
-    <string name="space_ready">您的工作空间已就绪</string>
-    <string name="space_instructions">点击图标，您可以私人空间和工作空间中来回切换</string>
     <string name="launch">启动</string>
-    <string name="space_content_downloading">正在加载空间内容</string>
     <string name="fragment1_title">工作空间</string>
-    <string name="fragment2_title">空间信息</string>
-    <string name="fragment3_title">下载中</string>
-    <string name="fragment4_title">工作空间已就绪</string>
     <string name="recommended_apps_title1">下载中</string>
     <string name="recommended_apps_title2">工作空间已就绪</string>
     <string name="skip">跳过</string>

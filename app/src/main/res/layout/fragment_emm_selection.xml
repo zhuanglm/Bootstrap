@@ -13,7 +13,6 @@
         android:paddingTop="@dimen/fragment_text_end_padding"
         android:paddingStart="@dimen/fragment_text_start_padding"
         android:paddingEnd="@dimen/fragment_text_end_padding"
-        android:id="@+id/textView3"
         android:layout_below="@+id/include3"
         android:layout_centerHorizontal="true" />
 

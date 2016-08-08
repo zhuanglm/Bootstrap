@@ -8,8 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="&#8226;"
-        android:textSize="@dimen/intro_fragment_small_text"
-        android:id="@+id/textView" />
+        android:textSize="@dimen/intro_fragment_small_text" />
 
     <TextView
         android:layout_width="wrap_content"
