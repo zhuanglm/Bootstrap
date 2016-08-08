@@ -11,8 +11,8 @@ android {
         applicationId "com.securespaces.android.bootstrap"
         minSdkVersion 22
         targetSdkVersion 22
-        versionCode 13
-        versionName "1.12"
+        versionCode 14
+        versionName "1.13"
     }
     buildTypes {
         release {
@@ -37,8 +37,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.+'
     compile 'com.android.support:design:23.+'
-    //compile 'com.securespaces.android.sdk:SecureSpacesSDK:4.2.0:internalRelease@aar'
-    compile project(':SpacesManager')
-    //compile project(':SpaceAppLibrary')
+    compile 'com.securespaces.android.sdk:SecureSpacesSDK:4.2.0-SNAPSHOT:internalRelease@aar'
     compile ('com.securespaces.android.sdk:SpaceAppLibrary:10.1.00@aar')
 }

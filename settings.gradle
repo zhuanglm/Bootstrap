@@ -1,7 +1,1 @@
 include ':app'
-
-//include ':SpaceAppLibrary'
-//project(':SpaceAppLibrary').projectDir = new File(settingsDir, '../../space-apps/SpaceAppLibrary/app')
-
-include 'SpacesManager'
-project(':SpacesManager').projectDir = new File(settingsDir, '../../android-6/packages/apps/SpacesManager')
