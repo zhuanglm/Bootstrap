@@ -17,10 +17,16 @@ import android.webkit.WebViewClient;
 
 import com.securespaces.android.ssm.SystemUtils;
 
+import java.util.Locale;
+
 /**
  * Created by eric on 26/07/16.
  */
 public class RecommendedAppsWebViewClient extends WebViewClient {
+
+    private static final String DEFAULT_SSRM_SERVER = "ssrm-dev.securespaces.com";
+    private static final String RECOMMENDED_URL_API = "api/v2/device/apps/recommended";
+
     private Context mContext;
     private Activity mActivity;
     private IWebErrorHandler mErrorHandler;
@@ -45,8 +51,14 @@ public class RecommendedAppsWebViewClient extends WebViewClient {
     }
 
     public String getRecommendedAppsUrl() {
-        //TODO: once it exists, put the actual recommended apps url here
-        return "http://www.securespaces.com/download.html";
+        String maker = Build.MANUFACTURER;
+        String language = Locale.getDefault().toString();
+        Uri.Builder uriBuilder = new Uri.Builder();
+        return  Uri.decode(uriBuilder.path(DEFAULT_SSRM_SERVER).
+                appendPath(RECOMMENDED_URL_API).
+                appendQueryParameter("maker", maker).
+                appendQueryParameter("language", language).
+                build().toString());
     }
 
     @Override

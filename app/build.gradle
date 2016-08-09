@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.securespaces.signing'
 
-def apkName = "Bootstrap"
+def apkName = "SpaceBootstrap"
 
 android {
     compileSdkVersion 23
@@ -11,8 +11,8 @@ android {
         applicationId "com.securespaces.android.bootstrap"
         minSdkVersion 22
         targetSdkVersion 22
-        versionCode 14
-        versionName "1.13"
+        versionCode 15
+        versionName "1.15"
     }
     buildTypes {
         release {
