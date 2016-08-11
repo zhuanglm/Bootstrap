@@ -54,6 +54,7 @@ public class RecommendedAppsWebViewClient extends WebViewClient {
         String maker = Build.MANUFACTURER;
         String language = Locale.getDefault().toString();
         Uri.Builder uriBuilder = new Uri.Builder();
+        uriBuilder.scheme("https");
         return  Uri.decode(uriBuilder.path(DEFAULT_SSRM_SERVER).
                 appendPath(RECOMMENDED_URL_API).
                 appendQueryParameter("maker", maker).
