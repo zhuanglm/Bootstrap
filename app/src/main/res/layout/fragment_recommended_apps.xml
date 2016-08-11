@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="@string/launch"
         android:id="@+id/proceedButton"
-        style="@style/Xiaomi.Button"
+        style="@style/Xiaomi.Button.Blue"
         android:layout_marginTop="10dp"
         android:enabled="false"
         android:layout_alignParentBottom="true"

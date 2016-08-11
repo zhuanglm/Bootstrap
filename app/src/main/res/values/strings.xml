@@ -20,15 +20,15 @@
     <!-- part 4 -->
 
     <!-- recommended apps -->
-    <string name="recommended_apps_title1">Downloading</string>
+    <string name="recommended_apps_title1">Recommended Apps</string>
     <string name="recommended_apps_title2">Work Space Ready</string>
 
     <!-- EMM -->
-    <string name="emm_select_title">Select your EMM</string>
+    <string name="emm_select_title">Welcome to your Work Space</string>
     <string name="emm_instructions">Please select the Enterprise Mobility Management tool used by your company.</string>
     <string name="skip">Skip</string>
     <string name="start">Start</string>
     <string name="thundersoft">Thundersoft</string>
     <string name="nationsky">Nation Sky</string>
-    <string name="no_emm">I don\'t know my EMM</string>
+    <string name="no_emm">Manage my own Work Space</string>
 </resources>

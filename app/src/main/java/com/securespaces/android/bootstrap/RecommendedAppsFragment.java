@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -75,11 +76,31 @@ public class RecommendedAppsFragment extends BootstrapFragment implements IWebEr
         webView.loadUrl(webViewClient.getRecommendedAppsUrl());
 
         if (getBootstrapActivity().getTargetPackage().equals(BootstrapActivity.EMM_NONE)) {
-            mProceedButton.setEnabled(true);
             mProceedButton.setText(R.string.start);
         } else if (getBootstrapActivity().canFindTargetPackage()) {
             onTargetPackageFound();
         }
+
+
+        new AsyncTask<Void,Void,Void>(){
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void param){
+                mProceedButton.setEnabled(true);
+            }
+        }.execute();
+
+
         return view;
     }
 

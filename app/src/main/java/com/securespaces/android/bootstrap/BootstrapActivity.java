@@ -51,9 +51,8 @@ public class BootstrapActivity extends AppCompatActivity {
         mSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         mFragments = new ArrayList<>();
-        mFragments.add(FragmentOne.newInstance(0));
-        mFragments.add(EmmSelectionFragment.newInstance(1));
-        mFragments.add(RecommendedAppsFragment.newInstance(2));
+        mFragments.add(EmmSelectionFragment.newInstance(0));
+        mFragments.add(RecommendedAppsFragment.newInstance(1));
 
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
         intentFilter.addDataScheme("package");

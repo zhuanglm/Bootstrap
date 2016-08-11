@@ -14,13 +14,13 @@
     <!-- part 3 -->
     <string name="launch">启动</string>
     <string name="fragment1_title">工作空间</string>
-    <string name="recommended_apps_title1">下载中</string>
+    <string name="recommended_apps_title1">推荐应用</string>
     <string name="recommended_apps_title2">工作空间已就绪</string>
     <string name="skip">跳过</string>
     <string name="thundersoft">中科创达</string>
     <string name="nationsky">国信灵通</string>
-    <string name="emm_select_title">选择EMM</string>
-    <string name="emm_instructions">请选择贵司使用的企业移动化管理工具。如果您不了解</string>
-    <string name="no_emm">不清楚公司使用的EMM</string>
+    <string name="emm_select_title">欢迎来到工作空间</string>
+    <string name="emm_instructions">请选择贵司使用的企业移动化管理工具。</string>
+    <string name="no_emm">管理我的工作空间</string>
     <string name="start">开始</string>
 </resources>

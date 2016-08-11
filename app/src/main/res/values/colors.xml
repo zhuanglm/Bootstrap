@@ -3,4 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorAccent">#FF4081</color>
 
+
+    <color name="xiaomi_button_background_blue">#0098e6</color>
+    <color name="xiaomi_button_background_selected_blue">#0080c1</color>
 </resources>

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * Created by eric on 02/08/16.
@@ -28,8 +29,8 @@ public class EmmSelectionFragment extends BootstrapFragment {
         View view = inflater.inflate(R.layout.fragment_emm_selection, null);
 
         unpackBundle();
-        setReturnListeners(view);
 
+        mToolbarTitle = (TextView)view.findViewById(R.id.toolbar_title);
         mToolbarTitle.setText(R.string.emm_select_title);
 
         mSkipButton = (Button)view.findViewById(R.id.skipButton);
