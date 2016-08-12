@@ -22,7 +22,7 @@
 -keepparameternames
 -keepattributes Exceptions,*Annotation*,SourceFile,LineNumberTable,Deprecated,Signature
 
--keep class com.securespaces.android.**
+-keep class com.securespaces.android.** { *; }
 
 -dontwarn com.securespaces.android.ssm.*
 -dontwarn com.securespaces.android.server.ServerUtils
