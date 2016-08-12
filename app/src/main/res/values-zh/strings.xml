@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">初始引导</string>
 
     <string name="next">下一步</string>
     <string name="space_features_title">工作空间可以为您提供：</string>

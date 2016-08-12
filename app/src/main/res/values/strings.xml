@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bootstrap</string>
+    <string name="app_name" translatable="false">Secure Spaces</string>
 
     <!-- part 1 -->
     <string name="next">Next</string>
