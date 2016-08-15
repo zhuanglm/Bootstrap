@@ -16,6 +16,7 @@ import android.util.Log;
 
 import com.securespaces.android.ssm.SpaceIntent;
 import com.securespaces.android.ssm.SpacesManager;
+import com.securespaces.android.ssm.UserUtils;
 
 import java.io.File;
 import java.util.HashSet;
@@ -113,7 +114,7 @@ public class AppInstallService extends Service {
         String requiredSdkVersion = "com.securespaces.android.sdk16";
         if (getPackageManager().hasSystemFeature(requiredSdkVersion)) {
             SpacesManager spacesManager = new SpacesManager(this);
-            spacesManager.installApp(file.getAbsolutePath());
+            spacesManager.installApp(downloadUri, UserUtils.myUserHandle());
         } else {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setDataAndType(Uri.fromFile(file), MIME_APK);
