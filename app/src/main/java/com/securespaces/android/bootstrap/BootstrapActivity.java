@@ -1,5 +1,8 @@
 package com.securespaces.android.bootstrap;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,12 +13,12 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.securespaces.android.ssm.SpacesManager;
 import com.securespaces.android.ssm.UserUtils;
 
-import java.security.Key;
 import java.util.ArrayList;
 
 public class BootstrapActivity extends AppCompatActivity {
@@ -24,9 +27,9 @@ public class BootstrapActivity extends AppCompatActivity {
     public static final String EMM_NATIONSKY = "com.nq.mdm";
     public static final String EMM_NONE = "";
     public static final String KEY_CHOSEN_EMM = "key_chosen_emm";
+    public static final String KEY_FINISHED = "key_finished";
 
-
-    private ArrayList<Fragment> mFragments;
+    private ArrayList<BootstrapFragment> mFragments;
     private SpacesManager mSpacesManager;
     private SharedPreferences mSharedPrefs;
 
@@ -62,15 +65,48 @@ public class BootstrapActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        if (!mSharedPrefs.getBoolean(KEY_FINISHED, false)) {
+            createNotification(this);
+        }
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         unregisterReceiver(mBroadcastReceiver);
+
+    }
+
+    public static void createNotification(Context context) {
+        NotificationManager notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        Intent intent = new Intent(context, BootstrapActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+
+        Notification.Builder builder = new Notification.Builder(context);
+        builder.setContentTitle(context.getString(R.string.notification_continue_title));
+        builder.setContentText(context.getString(R.string.notification_continue_text));
+        builder.setSmallIcon(R.drawable.ic_work_white_24dp);
+        builder.setContentIntent(pendingIntent);
+        builder.setOngoing(true);
+        builder.setAutoCancel(true);
+        notificationManager.notify(0, builder.build());
     }
 
     public void onProceedPushed(int callingFragmentPosition) {
         if (callingFragmentPosition < mFragments.size() - 1) {
             switchFragmentAnimated(mFragments.get(callingFragmentPosition+1));
         }
+    }
+
+    public void onLaunchPressed() {
+        mSharedPrefs.edit().putBoolean(KEY_FINISHED, true).apply();
+        if (canFindTargetPackage()) {
+            startActivity(getTargetPackageLaunchIntent());
+        }
+        finish();
     }
 
     private void switchFragment(Fragment fragment) {
@@ -97,7 +133,6 @@ public class BootstrapActivity extends AppCompatActivity {
     public String getTargetPackage() {
         // this is useful for testing purposes
         //return "com.securespaces.android.xiaomitest.mi";
-        //return context.getString(R.string.target_package);
         return mSharedPrefs.getString(KEY_CHOSEN_EMM,EMM_NONE);
     }
 

@@ -17,7 +17,8 @@
     <!-- part 3 -->
     <string name="launch">Launch</string>
 
-    <!-- part 4 -->
+    <string name="notification_continue_title">Setup Work Space</string>
+    <string name="notification_continue_text">Press to continue setting up your Work Space</string>
 
     <!-- recommended apps -->
     <string name="recommended_apps_title1">Recommended Apps</string>

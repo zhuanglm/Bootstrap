@@ -79,5 +79,6 @@ public class EmmSelectionFragment extends BootstrapFragment {
         mSkipButton.setText(R.string.button_continue);
         mNationskyButton.setEnabled(false);
         mThundersoftButton.setEnabled(false);
+        mNoEmmButton.setEnabled(false);
     }
 }

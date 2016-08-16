@@ -21,7 +21,5 @@
         android:id="@+id/proceedButton"
         style="@style/Xiaomi.Button.Blue"
         android:layout_marginTop="10dp"
-        android:enabled="false"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:enabled="false"/>
 </LinearLayout>
