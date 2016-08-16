@@ -74,6 +74,8 @@ public class AppInstallService extends Service {
         }
         String[] segments = source.getPath().split("/");
         String fileName = segments[segments.length-1];
+
+        request.setTitle(fileName.replaceAll(".apk",""));
         request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
         mDownloadIds.add(mDownloadManager.enqueue(request));
 
