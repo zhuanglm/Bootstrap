@@ -28,6 +28,8 @@ public class BootstrapActivity extends AppCompatActivity {
     public static final String EMM_NONE = "";
     public static final String KEY_CHOSEN_EMM = "key_chosen_emm";
     public static final String KEY_FINISHED = "key_finished";
+    public static final String KEY_PENDING_UNINSTALL = "key_pending_uninstall";
+    private static final int NOTIFICATION_ID = 0;
 
     private ArrayList<BootstrapFragment> mFragments;
     private SpacesManager mSpacesManager;
@@ -65,6 +67,12 @@ public class BootstrapActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        dismissNotification(this);
+    }
+
+    @Override
     public void onPause() {
         super.onPause();
         if (!mSharedPrefs.getBoolean(KEY_FINISHED, false)) {
@@ -92,7 +100,12 @@ public class BootstrapActivity extends AppCompatActivity {
         builder.setContentIntent(pendingIntent);
         builder.setOngoing(true);
         builder.setAutoCancel(true);
-        notificationManager.notify(0, builder.build());
+        notificationManager.notify(NOTIFICATION_ID, builder.build());
+    }
+
+    public static void dismissNotification(Context context) {
+        NotificationManager notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancel(NOTIFICATION_ID);
     }
 
     public void onProceedPushed(int callingFragmentPosition) {
@@ -143,10 +156,17 @@ public class BootstrapActivity extends AppCompatActivity {
     public void onEmmChosen(String emmPackageName) {
         mSharedPrefs.edit().putString(KEY_CHOSEN_EMM, emmPackageName).apply();
         if (emmPackageName.equals(EMM_NATIONSKY)) {
-            mSpacesManager.setPackageEnabledInSpace(EMM_THUNDERSOFT, false, UserUtils.myUserHandle());
+            disablePackage(EMM_THUNDERSOFT);
         } else if (emmPackageName.equals(EMM_THUNDERSOFT)){
-            mSpacesManager.setPackageEnabledInSpace(EMM_NATIONSKY, false, UserUtils.myUserHandle());
+            disablePackage(EMM_NATIONSKY);
         }
+    }
 
+    private void disablePackage(String packageName) {
+        if (mSpacesManager.isPackageInstalledInSpace(packageName, UserUtils.myUserHandle())) {
+            mSpacesManager.setPackageEnabledInSpace(packageName, false, UserUtils.myUserHandle());
+        } else {
+            mSharedPrefs.edit().putString(KEY_PENDING_UNINSTALL, packageName).apply();
+        }
     }
 }
