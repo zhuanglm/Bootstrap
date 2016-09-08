@@ -50,7 +50,7 @@ public class RecommendedAppsWebViewClient extends WebViewClient {
         }
     }
 
-    public String getRecommendedAppsUrl() {
+    public static String getRecommendedAppsUrl() {
         String maker = Build.MANUFACTURER;
         String language = Locale.getDefault().toString();
         Uri.Builder uriBuilder = new Uri.Builder();

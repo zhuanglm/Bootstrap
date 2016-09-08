@@ -13,8 +13,10 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 
 import com.securespaces.android.ssm.SpacesManager;
 import com.securespaces.android.ssm.UserUtils;
@@ -58,6 +60,9 @@ public class BootstrapActivity extends AppCompatActivity {
         mFragments = new ArrayList<>();
         mFragments.add(EmmSelectionFragment.newInstance(0));
         mFragments.add(RecommendedAppsFragment.newInstance(1));
+
+        WebView webView = (WebView)findViewById(R.id.webview);
+        webView.loadUrl(RecommendedAppsWebViewClient.getRecommendedAppsUrl());
 
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
         intentFilter.addDataScheme("package");

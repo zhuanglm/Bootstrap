@@ -58,7 +58,7 @@ public class RecommendedAppsFragment extends BootstrapFragment implements IWebEr
         } else {
             webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         }
-        webView.loadUrl(webViewClient.getRecommendedAppsUrl());
+        webView.loadUrl(RecommendedAppsWebViewClient.getRecommendedAppsUrl());
 
         if (getBootstrapActivity().getTargetPackage().equals(BootstrapActivity.EMM_NONE)) {
             mLaunchButton.setText(R.string.start);
