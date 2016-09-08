@@ -24,7 +24,7 @@ import java.util.Locale;
  */
 public class RecommendedAppsWebViewClient extends WebViewClient {
 
-    private static final String DEFAULT_SSRM_SERVER = "ssrm-dev.securespaces.com";
+    private static final String DEFAULT_SSRM_SERVER = "ssrm-cn.securespaces.com";
     private static final String RECOMMENDED_URL_API = "api/v2/device/apps/recommended";
 
     private Context mContext;

@@ -155,11 +155,6 @@ public class BootstrapActivity extends AppCompatActivity {
 
     public void onEmmChosen(String emmPackageName) {
         mSharedPrefs.edit().putString(KEY_CHOSEN_EMM, emmPackageName).apply();
-        if (emmPackageName.equals(EMM_NATIONSKY)) {
-            disablePackage(EMM_THUNDERSOFT);
-        } else if (emmPackageName.equals(EMM_THUNDERSOFT)){
-            disablePackage(EMM_NATIONSKY);
-        }
     }
 
     private void disablePackage(String packageName) {
