@@ -4,5 +4,4 @@
     <dimen name="fragment_text_start_padding">22dp</dimen>
     <dimen name="fragment_text_end_padding">22dp</dimen>
 
-    <dimen name="intro_fragment_small_text">17sp</dimen>
 </resources>

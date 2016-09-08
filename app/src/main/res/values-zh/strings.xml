@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name" translatable="false">Secure Spaces</string>
 
-    <string name="next">下一步</string>
-    <string name="space_features_title">工作空间可以为您提供：</string>
-
-    <string-array name="space_features">
-        <item>将工作应用账号与您的私人应用账号隔离开来</item>
-        <item>各个空间中的信息独立加密</item>
-        <item>IT管理员仅可以管理您的工作空间</item>
-        <item>防止恶意软件或病毒侵袭</item>
-    </string-array>
-
-    <!-- part 3 -->
     <string name="launch">启动</string>
-    <string name="fragment1_title">工作空间</string>
-    <string name="recommended_apps_title1">推荐应用</string>
+
+    <string name="notification_continue_title">设置工作空间Setup Work Space</string>
+    <string name="notification_continue_text">按此键继续设置您的工作空间</string>
+
+    <string name="recommended_apps_title1">推荐APP</string>
     <string name="recommended_apps_title2">工作空间已就绪</string>
-    <string name="skip">跳过</string>
-    <string name="thundersoft">中科创达</string>
-    <string name="nationsky">国信灵通</string>
+
     <string name="emm_select_title">欢迎来到工作空间</string>
-    <string name="emm_instructions">请选择贵司使用的企业移动化管理工具。</string>
-    <string name="no_emm">管理我的工作空间</string>
+    <string name="emm_instructions">请选择贵司使用的企业移动化管理工具</string>
+    <string name="skip">跳过</string>
     <string name="start">开始</string>
+    <string name="thundersoft">中科创达</string>
+    <string name="nationsky">国信灵通 </string>
+    <string name="no_emm">管理我的工作空间</string>
 </resources>

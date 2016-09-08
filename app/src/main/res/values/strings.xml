@@ -1,30 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Secure Spaces</string>
 
-    <!-- part 1 -->
-    <string name="next">Next</string>
-    <string name="fragment1_title">Work Space</string>
-
-    <!-- part 2 -->
-
-    <string name="space_features_title">What you can do with a Work Space:</string>
-    <string-array name="space_features">
-        <item>Keep your work apps and accounts separate from your personal apps and accounts.</item>
-        <item>Information is encrypted in each Space.</item>
-        <item>Let IT manage your Work Space and nothing else.</item>
-        <item>Protect work data from malware and viruses.</item>
-    </string-array>
-    <!-- part 3 -->
     <string name="launch">Launch</string>
 
     <string name="notification_continue_title">Setup Work Space</string>
     <string name="notification_continue_text">Press to continue setting up your Work Space</string>
 
-    <!-- recommended apps -->
     <string name="recommended_apps_title1">Recommended Apps</string>
     <string name="recommended_apps_title2">Work Space Ready</string>
 
-    <!-- EMM -->
     <string name="emm_select_title">Welcome to your Work Space</string>
     <string name="emm_instructions">Please select the Enterprise Mobility Management tool used by your company.</string>
     <string name="skip">Skip</string>
