@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Secure Spaces</string>
-
     <string name="launch">启动</string>
 
     <string name="notification_continue_title">设置工作空间Setup Work Space</string>
