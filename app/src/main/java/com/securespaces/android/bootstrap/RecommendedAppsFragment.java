@@ -16,6 +16,7 @@ import android.widget.Button;
  * Created by eric on 26/07/16.
  */
 public class RecommendedAppsFragment extends BootstrapFragment implements IWebErrorHandler, IFinalFragment {
+    private static final int ENABLE_BUTTON_DELAY = 3000;
     Button mLaunchButton;
 
     public static RecommendedAppsFragment newInstance(int position) {
@@ -70,7 +71,7 @@ public class RecommendedAppsFragment extends BootstrapFragment implements IWebEr
             @Override
             protected Void doInBackground(Void... params) {
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(ENABLE_BUTTON_DELAY);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
