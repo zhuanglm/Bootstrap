@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +60,7 @@ public class RecommendedAppsFragment extends BootstrapFragment implements IWebEr
         } else {
             webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         }
+        Log.d("Eric","url is " + RecommendedAppsWebViewClient.getRecommendedAppsUrl());
         webView.loadUrl(RecommendedAppsWebViewClient.getRecommendedAppsUrl());
 
         if (getBootstrapActivity().getTargetPackage().equals(BootstrapActivity.EMM_NONE)) {

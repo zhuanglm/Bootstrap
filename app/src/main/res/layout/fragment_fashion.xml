@@ -2,25 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <include layout="@layout/toolbar_fashion" />
-    <FrameLayout
+
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <WebView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/web_view"
-            android:background="@color/xiaomi_background_color"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:layout_weight="1"
+        android:src="@drawable/fashion_boot"
+        android:scaleType="fitXY"
+        android:layout_gravity="center" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/launch"
-        android:id="@+id/proceedButton"
         android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:text="@string/start"
         android:textColor="@android:color/white"
         android:background="@color/fashion_yellow"
-        android:enabled="false"/>
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>

@@ -24,8 +24,8 @@ import java.util.Locale;
  */
 public class RecommendedAppsWebViewClient extends WebViewClient {
 
-    private static final String DEFAULT_SSRM_SERVER = "ssrm-cn.securespaces.com";
-    private static final String RECOMMENDED_URL_API = "api/v2/device/apps/recommended";
+    private static final String DEFAULT_SSRM_SERVER = "ssrm.securespaces.com";
+    private static final String RECOMMENDED_URL_API = "api/v2/device/apps/recommended?view=karbonnfashion";
 
     private Context mContext;
     private Activity mActivity;
@@ -51,6 +51,8 @@ public class RecommendedAppsWebViewClient extends WebViewClient {
     }
 
     public static String getRecommendedAppsUrl() {
+        return "https://ssrm.securespaces.com/api/v2/device/apps/recommended?view=karbonnfashion";
+        /*
         String maker = Build.MANUFACTURER;
         String language = Locale.getDefault().toString();
         Uri.Builder uriBuilder = new Uri.Builder();
@@ -60,6 +62,7 @@ public class RecommendedAppsWebViewClient extends WebViewClient {
                 appendQueryParameter("maker", maker).
                 appendQueryParameter("language", language).
                 build().toString());
+                */
     }
 
     @Override

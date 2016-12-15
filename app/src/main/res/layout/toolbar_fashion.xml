@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/xiaomi_actionbar_height"
+        android:background="@color/colorPrimary">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"
+                android:background="@color/colorPrimary"
+                android:layout_gravity="center"
+                android:paddingTop="20dp"
+                android:paddingStart="0.75dp"
+                android:paddingEnd="16.1dp"
+                android:id="@+id/backImage" />
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/default_toolbar_text"
+                android:theme="@style/XiaomiToolbarText"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/xiamoi_toolbar_line_color" />
+</LinearLayout>

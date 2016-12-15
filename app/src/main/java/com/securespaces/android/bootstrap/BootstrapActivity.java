@@ -33,6 +33,10 @@ public class BootstrapActivity extends AppCompatActivity {
     public static final String KEY_PENDING_UNINSTALL = "key_pending_uninstall";
     private static final int NOTIFICATION_ID = 0;
 
+    private static final int MODE_NORMAL = 1;
+    private static final int MODE_FASHIONABLE = 2;
+
+    private int mMode;
     private ArrayList<BootstrapFragment> mFragments;
     private SpacesManager mSpacesManager;
     private SharedPreferences mSharedPrefs;
@@ -58,8 +62,15 @@ public class BootstrapActivity extends AppCompatActivity {
         mSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         mFragments = new ArrayList<>();
-        mFragments.add(EmmSelectionFragment.newInstance(0));
-        mFragments.add(RecommendedAppsFragment.newInstance(1));
+
+        mMode = MODE_FASHIONABLE;
+        if (mMode == MODE_NORMAL) {
+            mFragments.add(EmmSelectionFragment.newInstance(0));
+            mFragments.add(RecommendedAppsFragment.newInstance(1));
+        } else if (mMode == MODE_FASHIONABLE) {
+            mFragments.add(FashionFragment.newInstance(0));
+            mFragments.add(RecommendedAppsFragment.newInstance(1));
+        }
 
         WebView webView = (WebView)findViewById(R.id.webview);
         webView.loadUrl(RecommendedAppsWebViewClient.getRecommendedAppsUrl());
