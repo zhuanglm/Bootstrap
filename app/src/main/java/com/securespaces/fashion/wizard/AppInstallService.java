@@ -1,4 +1,4 @@
-package com.securespaces.android.bootstrap;
+package com.securespaces.fashion.wizard;
 
 import android.app.DownloadManager;
 import android.app.Service;
@@ -12,9 +12,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
-import com.securespaces.android.ssm.SpaceIntent;
 import com.securespaces.android.ssm.SpacesManager;
 import com.securespaces.android.ssm.UserUtils;
 

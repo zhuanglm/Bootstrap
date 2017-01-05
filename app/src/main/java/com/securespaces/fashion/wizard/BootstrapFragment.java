@@ -1,9 +1,11 @@
-package com.securespaces.android.bootstrap;
+package com.securespaces.fashion.wizard;
 
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.securespaces.fashion.wizard.R;
 
 /**
  * Created by eric on 02/08/16.

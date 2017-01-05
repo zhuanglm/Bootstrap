@@ -1,4 +1,4 @@
-package com.securespaces.android.bootstrap;
+package com.securespaces.fashion.wizard;
 
 public interface IWebErrorHandler {
     void handleWebConnectionError();

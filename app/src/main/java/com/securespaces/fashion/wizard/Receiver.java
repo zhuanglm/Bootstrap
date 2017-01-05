@@ -1,11 +1,10 @@
-package com.securespaces.android.bootstrap;
+package com.securespaces.fashion.wizard;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import com.securespaces.android.ssm.SpacesManager;
 import com.securespaces.android.ssm.UserUtils;

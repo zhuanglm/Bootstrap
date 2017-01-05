@@ -1,4 +1,4 @@
-package com.securespaces.android.bootstrap;
+package com.securespaces.fashion.wizard;
 
 import android.app.Activity;
 import android.net.ConnectivityManager;
@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
+
+import com.securespaces.fashion.wizard.R;
 
 /**
  * Created by eric on 26/07/16.

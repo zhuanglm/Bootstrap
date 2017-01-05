@@ -1,4 +1,4 @@
-package com.securespaces.android.bootstrap;
+package com.securespaces.fashion.wizard;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -13,13 +13,13 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.securespaces.android.ssm.SpacesManager;
 import com.securespaces.android.ssm.UserUtils;
+import com.securespaces.fashion.wizard.R;
 
 import java.util.ArrayList;
 
@@ -73,6 +73,8 @@ public class BootstrapActivity extends AppCompatActivity {
         }
 
         WebView webView = (WebView)findViewById(R.id.webview);
+        webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+        webView.getSettings().setDomStorageEnabled(true);
         webView.loadUrl(RecommendedAppsWebViewClient.getRecommendedAppsUrl());
 
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);

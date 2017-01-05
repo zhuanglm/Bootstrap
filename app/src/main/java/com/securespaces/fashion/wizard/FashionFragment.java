@@ -1,10 +1,12 @@
-package com.securespaces.android.bootstrap;
+package com.securespaces.fashion.wizard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.securespaces.fashion.wizard.R;
 
 /**
  * Created by eric on 15/12/16.

@@ -17,4 +17,12 @@
     <string name="thundersoft">Thundersoft</string>
     <string name="nationsky">Nation Sky</string>
     <string name="no_emm">Manage my own Work Space</string>
+
+    <string name="slogan">Fashion. Beauty. Lifestyle.</string>
+    <string name="welcome">Welcome to the</string>
+    <string name="title">Fashion Space</string>
+    <string name="crown">\u265A</string>
+    <string name="square">\u25A0</string>
+    <string name="description1">Receive exclusive offers from the top online retailers in India.</string>
+    <string name="description2">Get the latest fashion trends, beauty tips and industry news delivered directly to your Space.</string>
 </resources>

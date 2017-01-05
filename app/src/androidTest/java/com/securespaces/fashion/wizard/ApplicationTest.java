@@ -1,4 +1,4 @@
-package com.securespaces.android.bootstrap;
+package com.securespaces.fashion.wizard;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
