@@ -73,7 +73,6 @@ public class BootstrapActivity extends AppCompatActivity {
         }
 
         WebView webView = (WebView)findViewById(R.id.webview);
-        webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
         webView.getSettings().setDomStorageEnabled(true);
         webView.loadUrl(RecommendedAppsWebViewClient.getRecommendedAppsUrl());
 

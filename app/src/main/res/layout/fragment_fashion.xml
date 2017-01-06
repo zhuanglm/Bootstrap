@@ -10,7 +10,7 @@
         android:layout_above="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/fashion_bg">
+        android:background="@drawable/background_centralize">
 
 
         <LinearLayout
@@ -70,7 +70,7 @@
             android:textColor="@android:color/white"
             android:textAlignment="center"
             android:layout_marginTop="20dp"
-            android:textSize="24sp" />
+            android:textSize="28sp" />
 
         <LinearLayout
             android:orientation="horizontal"
