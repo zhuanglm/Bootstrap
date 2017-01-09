@@ -12,14 +12,14 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 
 import com.securespaces.android.ssm.SpacesManager;
 import com.securespaces.android.ssm.UserUtils;
 import com.securespaces.fashion.wizard.R;
+import com.securespaces.fashion.wizard.common.ViewPagerEx;
 
 import java.util.ArrayList;
 
@@ -36,10 +36,17 @@ public class BootstrapActivity extends AppCompatActivity {
     private static final int MODE_NORMAL = 1;
     private static final int MODE_FASHIONABLE = 2;
 
+    public static final int FRAG_NUMBER = 2;
+    public static final int FRAG_FASHION = 0;
+    public static final int FRAG_APPS = 1;
+    private ArrayList<Integer> mLastPages = new ArrayList<>();
+
     private int mMode;
     private ArrayList<BootstrapFragment> mFragments;
     private SpacesManager mSpacesManager;
     private SharedPreferences mSharedPrefs;
+    private ViewPagerEx mPager;
+    private MyPagerAdapter mAdapter;
 
     BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
@@ -50,12 +57,15 @@ public class BootstrapActivity extends AppCompatActivity {
         }
     };
 
+    public BootstrapActivity() {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         setContentView(R.layout.activity_bootstrap);
 
         mSpacesManager = new SpacesManager(this);
@@ -72,15 +82,26 @@ public class BootstrapActivity extends AppCompatActivity {
             mFragments.add(RecommendedAppsFragment.newInstance(1));
         }
 
-        WebView webView = (WebView)findViewById(R.id.webview);
-        webView.getSettings().setDomStorageEnabled(true);
-        webView.loadUrl(RecommendedAppsWebViewClient.getRecommendedAppsUrl());
-
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
         intentFilter.addDataScheme("package");
         registerReceiver(mBroadcastReceiver, intentFilter);
 
-        switchFragment(mFragments.get(0));
+        mPager = (ViewPagerEx) findViewById(R.id.pager);
+        mPager.setPagingEnabled(false);
+
+        mAdapter = new MyPagerAdapter(getSupportFragmentManager());
+
+        mPager.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        int size = mLastPages.size();
+        if (size>0) {
+            mPager.setCurrentItem(mLastPages.get(size-1));
+            mLastPages.remove(size-1);
+        } else
+            super.onBackPressed();
     }
 
     @Override
@@ -105,7 +126,7 @@ public class BootstrapActivity extends AppCompatActivity {
     }
 
     public static void createNotification(Context context) {
-        NotificationManager notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         Intent intent = new Intent(context, BootstrapActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
@@ -121,13 +142,13 @@ public class BootstrapActivity extends AppCompatActivity {
     }
 
     public static void dismissNotification(Context context) {
-        NotificationManager notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(NOTIFICATION_ID);
     }
 
     public void onProceedPushed(int callingFragmentPosition) {
         if (callingFragmentPosition < mFragments.size() - 1) {
-            switchFragmentAnimated(mFragments.get(callingFragmentPosition+1));
+            switchFragmentAnimated(mFragments.get(callingFragmentPosition + 1));
         }
     }
 
@@ -139,11 +160,6 @@ public class BootstrapActivity extends AppCompatActivity {
         finish();
     }
 
-    private void switchFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
-    }
-
     private void switchFragmentAnimated(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
@@ -153,6 +169,7 @@ public class BootstrapActivity extends AppCompatActivity {
                 .commit();
 
     }
+
     public boolean canFindTargetPackage() {
         return getTargetPackageLaunchIntent() != null;
     }
@@ -160,14 +177,15 @@ public class BootstrapActivity extends AppCompatActivity {
     public Intent getTargetPackageLaunchIntent() {
         return getPackageManager().getLaunchIntentForPackage(getTargetPackage());
     }
+
     public String getTargetPackage() {
         // this is useful for testing purposes
         //return "com.securespaces.android.xiaomitest.mi";
-        return mSharedPrefs.getString(KEY_CHOSEN_EMM,EMM_NONE);
+        return mSharedPrefs.getString(KEY_CHOSEN_EMM, EMM_NONE);
     }
 
     private void targetPackageFound() {
-        ((IFinalFragment)mFragments.get(mFragments.size()-1)).onTargetPackageFound();
+        ((IFinalFragment) mFragments.get(mFragments.size() - 1)).onTargetPackageFound();
     }
 
     public void onEmmChosen(String emmPackageName) {
@@ -180,5 +198,44 @@ public class BootstrapActivity extends AppCompatActivity {
         } else {
             mSharedPrefs.edit().putString(KEY_PENDING_UNINSTALL, packageName).apply();
         }
+    }
+
+    public class MyPagerAdapter extends FragmentStatePagerAdapter {
+
+        public MyPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            BootstrapFragment fg;
+            switch (position) {
+
+                case FRAG_FASHION:
+                    fg = FashionFragment.newInstance(0);
+
+                    return fg;
+
+                case FRAG_APPS:
+                    fg = RecommendedAppsFragment.newInstance(1);
+
+                    return fg;
+
+                default:
+                    fg = new BootstrapFragment();
+                    return fg;
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return FRAG_NUMBER;
+        }
+    }
+
+    public void showFragmentPage(int currentPos, int newPos) {
+        if (currentPos >= 0)
+            mLastPages.add(currentPos);
+        mPager.setCurrentItem(newPos);
     }
 }

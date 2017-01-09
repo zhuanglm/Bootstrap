@@ -71,23 +71,6 @@ public class RecommendedAppsFragment extends BootstrapFragment implements IWebEr
             onTargetPackageFound();
         }
 
-        new AsyncTask<Void,Void,Void>(){
-            @Override
-            protected Void doInBackground(Void... params) {
-                try {
-                    Thread.sleep(ENABLE_BUTTON_DELAY);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void param){
-                mLaunchButton.setEnabled(true);
-            }
-        }.execute();
-
         return view;
     }
 

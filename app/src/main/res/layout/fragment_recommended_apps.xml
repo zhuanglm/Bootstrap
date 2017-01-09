@@ -22,5 +22,5 @@
         android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:textColor="@android:color/white"
         android:background="@color/fashion_yellow"
-        android:enabled="false"/>
+        android:enabled="true"/>
 </LinearLayout>

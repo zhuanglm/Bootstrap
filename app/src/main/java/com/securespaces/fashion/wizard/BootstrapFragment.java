@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.securespaces.fashion.wizard.R;
 
 /**
  * Created by eric on 02/08/16.
@@ -19,7 +18,7 @@ public class BootstrapFragment extends Fragment {
     public View.OnClickListener mBackListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            getActivity().onBackPressed();
+            getBootstrapActivity().onBackPressed();
         }
     };
 

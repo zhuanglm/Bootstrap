@@ -32,7 +32,7 @@ public class FashionFragment extends BootstrapFragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onProceed();
+                getBootstrapActivity().showFragmentPage(mPosition,mPosition+1);
             }
         });
         return view;
