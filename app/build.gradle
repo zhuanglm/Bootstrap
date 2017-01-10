@@ -12,7 +12,7 @@ android {
         minSdkVersion 22
         targetSdkVersion 22
         versionCode 20
-        versionName "1.20"
+        versionName "1.22"
     }
     lintOptions {
         checkReleaseBuilds false
