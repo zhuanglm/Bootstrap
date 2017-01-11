@@ -1,18 +1,18 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.securespaces.signing'
 
-def apkName = "SpaceBootstrap"
+def apkName = "EnterpriseBootstrap"
 
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.securespaces.fashion.wizard"
+        applicationId "com.securespaces.wizard.enterprise"
         minSdkVersion 22
         targetSdkVersion 22
-        versionCode 20
-        versionName "1.22"
+        versionCode 23
+        versionName "1.23"
     }
     lintOptions {
         checkReleaseBuilds false

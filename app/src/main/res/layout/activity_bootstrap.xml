@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.securespaces.fashion.wizard.BootstrapActivity">
+    tools:context="com.securespaces.wizard.enterprise.com.securespaces.wizard.BootstrapActivity">
 
-    <com.securespaces.fashion.wizard.common.ViewPagerEx
+    <com.securespaces.wizard.enterprise.common.ViewPagerEx
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".BootstrapActivity" />
+        tools:context="com.securespaces.wizard.BootstrapActivity" />
 
     <FrameLayout
         android:id="@+id/container"
