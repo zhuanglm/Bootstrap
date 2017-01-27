@@ -10,19 +10,16 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 /**
- * Created by eric on 26/07/16.
+ * Created by eric on 27/01/17.
  */
-public class RecommendedAppsWebViewClient extends WebViewClient {
 
-    private static final String DEFAULT_SSRM_SERVER = "ssrm.securespaces.com";
-    private static final String RECOMMENDED_URL_API = "api/v2/device/apps/recommended?view=enterprise-apps";
+public class IntroFragmentWebViewClient extends WebViewClient {
 
-    private Context mContext;
+
     private Activity mActivity;
     private IWebErrorHandler mErrorHandler;
 
-    public RecommendedAppsWebViewClient(Activity activity, IWebErrorHandler errorHandler) {
-        mContext = activity;
+    public IntroFragmentWebViewClient(Activity activity, IWebErrorHandler errorHandler) {
         mActivity = activity;
         mErrorHandler = errorHandler;
     }
@@ -42,13 +39,6 @@ public class RecommendedAppsWebViewClient extends WebViewClient {
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        if (url.endsWith(".apk")) {
-            // launch dat service!
-            Intent intent = new Intent(mContext, AppInstallService.class);
-            intent.putExtra(AppInstallService.EXTRA_DOWNLOAD_URL, url);
-            mContext.startService(intent);
-        }
-
         return true;
     }
 
@@ -63,4 +53,5 @@ public class RecommendedAppsWebViewClient extends WebViewClient {
         //Return response obtained from cache
         return response;
     }
+
 }

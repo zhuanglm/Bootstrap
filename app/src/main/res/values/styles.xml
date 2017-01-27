@@ -12,18 +12,4 @@
 
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
-
-
-
-    <style name="Xiaomi.Button.Blue" parent="Base.Widget.AppCompat.Button.Borderless">
-        <item name="android:textColor">@color/xiaomi_blue_button_text</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:fontFamily">sans-serif-light</item>
-        <item name="android:background">@drawable/button_selector_rounded_blue</item>
-        <item name="android:layout_gravity">center_horizontal|bottom</item>
-        <item name="android:layout_marginStart">20dp</item>
-        <item name="android:layout_marginEnd">20dp</item>
-        <item name="android:layout_height">40.9dp</item>
-        <item name="android:layout_marginBottom">24.3dp</item>
-    </style>
 </resources>

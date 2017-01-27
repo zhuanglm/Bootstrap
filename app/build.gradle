@@ -8,7 +8,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.securespaces.wizard.enterprise"
+        applicationId "com.securespaces.android.wizard"
         minSdkVersion 22
         targetSdkVersion 22
         versionCode 23
@@ -43,6 +43,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.+'
     compile 'com.android.support:design:23.+'
-    compile 'com.securespaces.android.sdk:SecureSpacesSDK:4.2.0-SNAPSHOT:internalRelease@aar'
-    compile ('com.securespaces.android.sdk:SpaceAppLibrary:10.1.00@aar')
+    compile 'com.securespaces.android.sdk:SecureSpacesSDK:4.5.0:internalRelease@aar'
+    compile 'com.securespaces.android.sdk:SpaceAppLibrary:10.1.10-SNAPSHOT@aar'
 }

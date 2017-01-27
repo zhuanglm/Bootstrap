@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Enterprise Space</string>
+    <string name="app_name" translatable="false">Bootstrap</string>
 
     <string name="launch">Launch</string>
 
-    <string name="notification_continue_title">Setup Enterprise Space</string>
-    <string name="notification_continue_text">Press to continue setting up your Enterprise Space</string>
+    <string name="notification_continue_title">Setup Work Space</string>
+    <string name="notification_continue_text">Press to continue setting up your Work Space</string>
 
     <string name="recommended_apps_title1">Recommended Apps</string>
     <string name="recommended_apps_title2">Recommended Apps</string>
 
-    <string name="emm_select_title">Welcome to your Work Space</string>
-    <string name="emm_instructions">Please select the Enterprise Mobility Management tool used by your company.</string>
     <string name="skip">Skip</string>
     <string name="start">Start</string>
-    <string name="thundersoft">Thundersoft</string>
-    <string name="nationsky">Nation Sky</string>
-    <string name="no_emm">Manage my own Work Space</string>
-    <string name="welcome">Welcome to the</string>
-    <string name="title" translatable="false">Enterprise Space</string>
+
+    <string name="square" translatable="false">\u25A0</string>
 </resources>
