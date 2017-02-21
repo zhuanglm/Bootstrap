@@ -27,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name="com.securespaces.wizard.AppInstallService" />
+        <service android:name="com.securespaces.android.spaceapplibrary.AppInstallService" />
     </application>
 
 </manifest>

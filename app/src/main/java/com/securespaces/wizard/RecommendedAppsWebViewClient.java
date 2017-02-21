@@ -9,6 +9,8 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.securespaces.android.spaceapplibrary.AppInstallService;
+
 /**
  * Created by eric on 26/07/16.
  */
