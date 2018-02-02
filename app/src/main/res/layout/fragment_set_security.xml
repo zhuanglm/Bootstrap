@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar_bootstrap"
+        android:id="@+id/include_toolbar" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:src="@drawable/emm"
+        android:layout_below="@+id/include_toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:paddingTop="@dimen/fragment_text_end_padding" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/imageView"
+        android:layout_above="@+id/lowLevelLayout"
+        android:orientation="vertical"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="sans-serif"
+
+            android:paddingEnd="@dimen/fragment_text_end_padding"
+            android:paddingStart="@dimen/fragment_text_start_padding"
+            android:text="@string/security_title"
+            android:textSize="18sp"
+            android:textStyle="normal|bold"
+            android:layout_centerHorizontal="false"
+            android:textAlignment="center"
+            android:paddingTop="@dimen/fragment_text_end_padding"
+            android:paddingBottom="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@string/security_summary"
+            android:textSize="14sp"
+            android:paddingLeft="@dimen/fragment_text_start_padding"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lowLevelLayout"
+        android:layout_above="@+id/midLevelLayout">
+
+        <Button
+            android:layout_width="match_parent"
+            android:text="@string/low"
+            android:id="@+id/lowLevelButton"
+
+            style="@style/Xiaomi.Button.LightBlue"
+            android:layerType="none"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom|center_horizontal"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/ic_info"
+            android:layout_alignBottom="@+id/lowLevelButton"
+            android:layout_alignEnd="@+id/lowLevelButton"
+            android:id="@+id/imageView_low"
+            android:padding="9dp"
+            android:layout_width="50dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/midLevelLayout"
+        android:layout_above="@+id/highLevelLayout">
+
+        <Button
+            android:layout_width="match_parent"
+            android:text="@string/medium"
+            android:id="@+id/mediumLevelButton"
+
+            style="@style/Xiaomi.Button.MediumBlue"
+            android:layerType="none"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom|center_horizontal"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/ic_info"
+            android:layout_alignBottom="@+id/mediumLevelButton"
+            android:layout_alignEnd="@+id/mediumLevelButton"
+            android:id="@+id/imageView_medium"
+            android:padding="9dp"
+            android:layout_width="50dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/highLevelLayout"
+        android:layout_above="@+id/customButton">
+
+        <Button
+            android:layout_width="match_parent"
+            android:text="@string/high"
+            android:id="@+id/highLevelButton"
+            style="@style/Xiaomi.Button.DeepBlue"
+            android:layerType="none"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom|center_horizontal"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/ic_info"
+            android:layout_alignBottom="@+id/highLevelButton"
+            android:layout_alignEnd="@+id/highLevelButton"
+            android:id="@+id/imageView_high"
+            android:padding="9dp"
+            android:layout_width="50dp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="@string/custom"
+        android:id="@+id/customButton"
+        style="@style/Xiaomi.Button.Rect"
+        android:layerType="none"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom|center_horizontal" />
+
+</RelativeLayout>

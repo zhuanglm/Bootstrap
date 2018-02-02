@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="low_security_items">
+        <item>Location Services|ON</item>
+        <item>NFC|ON</item>
+        <item>SMS|ON</item>
+        <item>ScreenShot|ON</item>
+        <item>Sharing out of Space|ON</item>
+        <item>Stop Space on Exit|OFF</item>
+        <item>Exclusive Network Access|OFF</item>
+        <item>Allow User Data Deletion|ON</item>
+        <item>Bluetooth|ON</item>
+        <item>Outgoing Calls|ON</item>
+        <item>Microphone|ON</item>
+        <item>Read Device Info|ON</item>
+        <item>Sharing into Space|ON</item>
+        <item>Lock other Spaces on Entry|OFF</item>
+        <item>Delete user data on exit|OFF</item>
+        <item>Allow USB connection|ON</item>
+        <item>Notifications|All</item>
+        <item>Camera|Enabled</item>
+        <item>Debugging|ON</item>
+        <item>Screen Lock allowed|ON</item>
+        <item>Authentication|OFF</item>
+        <item>Auth Type|NA</item>
+        <item>Password Minimum Length|NA</item>
+        <item>Password Expiration|NA</item>
+        <item>Password recovery|Enabled</item>
+        <item>Exit on Sleep|Default</item>
+    </string-array>
+
+    <string-array name="medium_security_items">
+        <item>Location Services|ON</item>
+        <item>NFC|ON</item>
+        <item>SMS|ON</item>
+        <item>ScreenShot|ON</item>
+        <item>Sharing out of Space|ON</item>
+        <item>Stop Space on Exit|OFF</item>
+        <item>Exclusive Network Access|OFF</item>
+        <item>Allow User Data Deletion|ON</item>
+        <item>Bluetooth|ON</item>
+        <item>Outgoing Calls|ON</item>
+        <item>Microphone|ON</item>
+        <item>Read Device Info|ON</item>
+        <item>Sharing into Space|ON</item>
+        <item>Lock other Spaces on Entry|OFF</item>
+        <item>Delete user data on exit|OFF</item>
+        <item>Allow USB connection|ON</item>
+        <item>Notifications|Hide Sensitive</item>
+        <item>Camera|Enabled</item>
+        <item>Debugging|ON</item>
+        <item>Screen Lock allowed|ON</item>
+        <item>Authentication|OFF</item>
+        <item>Auth Type|NA</item>
+        <item>Password Minimum Length|NA</item>
+        <item>Password Expiration|NA</item>
+        <item>Password recovery|Automatic</item>
+        <item>Exit on Sleep|30 seconds</item>
+    </string-array>
+
+    <string-array name="high_security_items">
+        <item>Location Services|OFF</item>
+        <item>NFC|OFF</item>
+        <item>SMS|OFF</item>
+        <item>ScreenShot|OFF</item>
+        <item>Sharing out of Space|ON</item>
+        <item>Stop Space on Exit|ON</item>
+        <item>Exclusive Network Access|OFF</item>
+        <item>Allow User Data Deletion|OFF</item>
+        <item>Bluetooth|OFF</item>
+        <item>Outgoing Calls|OFF</item>
+        <item>Microphone|OFF</item>
+        <item>Read Device Info|OFF</item>
+        <item>Sharing into Space|OFF</item>
+        <item>Lock other Spaces on Entry|OFF</item>
+        <item>Delete user data on exit|OFF</item>
+        <item>Allow USB connection|ON</item>
+        <item>Notifications|No</item>
+        <item>Camera|OFF</item>
+        <item>Debugging|ON</item>
+        <item>Screen Lock allowed|ON</item>
+        <item>Authentication|OFF</item>
+        <item>Auth Type|NA</item>
+        <item>Password Minimum Length|NA</item>
+        <item>Password Expiration|NA</item>
+        <item>Password recovery|Automatic</item>
+        <item>Exit on Sleep|Never</item>
+    </string-array>
+
+
+</resources>

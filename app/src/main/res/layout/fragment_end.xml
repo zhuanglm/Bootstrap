@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar_bootstrap"
+        android:id="@+id/include_toolbar" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:src="@drawable/emm"
+        android:layout_below="@+id/include_toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:paddingTop="@dimen/fragment_text_end_padding" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/imageView"
+        android:layout_above="@+id/continueButton"
+        android:orientation="vertical"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="sans-serif"
+
+            android:padding="@dimen/fragment_text_end_padding"
+            android:paddingEnd="@dimen/fragment_text_end_padding"
+            android:paddingStart="@dimen/fragment_text_start_padding"
+            android:text="@string/end_title"
+            android:textSize="18sp"
+            android:textStyle="normal|bold"
+            android:layout_centerHorizontal="false"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@string/end_summary"
+            android:textSize="14sp"
+            android:paddingLeft="@dimen/fragment_text_start_padding"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+    <Button
+        style="@style/Xiaomi.Button.Blue"
+        android:text="@string/ok"
+        android:id="@+id/continueButton"
+        android:layerType="none"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom|center_horizontal"/>
+
+</RelativeLayout>

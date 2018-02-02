@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<restrictions xmlns:android="http://schemas.android.com/apk/res/android">
+    <restriction
+        android:key="front_page_background_url"
+        android:restrictionType="string"
+        android:title="front_page_background_url" />
+    <restriction
+        android:key="text_color_primary"
+        android:restrictionType="string"
+        android:title="text_color_primary" />
+    <restriction
+        android:key="title_line_1"
+        android:restrictionType="string"
+        android:title="title_line_1" />
+    <restriction
+        android:key="title_line_2"
+        android:restrictionType="string"
+        android:title="title_line_2" />
+    <restriction
+        android:key="tag_line"
+        android:restrictionType="string"
+        android:title="tag_line" />
+    <restriction
+        android:key="bullet_1"
+        android:restrictionType="string"
+        android:title="bullet_1" />
+    <restriction
+        android:key="bullet_2"
+        android:restrictionType="string"
+        android:title="bullet_2" />
+    <restriction
+        android:key="bullet_3"
+        android:restrictionType="string"
+        android:title="bullet_3" />
+    <restriction
+        android:key="button_color"
+        android:restrictionType="string"
+        android:title="button_color" />
+    <restriction
+        android:key="button_text_color"
+        android:restrictionType="string"
+        android:title="button_text_color" />
+    <restriction
+        android:key="button_text"
+        android:restrictionType="string"
+        android:title="button_text" />
+    <restriction
+        android:key="button_action"
+        android:restrictionType="string"
+        android:title="button_action" />
+
+
+    <restriction
+        android:key="header_color"
+        android:restrictionType="string"
+        android:title="header_color" />
+    <restriction
+        android:key="header_text_color"
+        android:restrictionType="string"
+        android:title="header_text_color" />
+    <restriction
+        android:key="header_text"
+        android:restrictionType="string"
+        android:title="header_text" />
+    <restriction
+        android:key="page_2_background_url"
+        android:restrictionType="string"
+        android:title="page_2_background_url" />
+    <restriction
+        android:key="button_color_2"
+        android:restrictionType="string"
+        android:title="button_color_2" />
+    <restriction
+        android:key="button_text_color_2"
+        android:restrictionType="string"
+        android:title="button_text_color_2" />
+    <restriction
+        android:key="button_text_2"
+        android:restrictionType="string"
+        android:title="button_text_2" />
+    <restriction
+        android:key="button_action_2"
+        android:restrictionType="string"
+        android:title="button_action_2" />
+
+
+    <restriction
+        android:key="fragments_config"
+        android:restrictionType="string"
+        android:title="Fragment configuration" />
+
+</restrictions>
