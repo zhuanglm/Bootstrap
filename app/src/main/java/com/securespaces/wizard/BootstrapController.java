@@ -17,10 +17,6 @@ import com.securespaces.wizard.enterprise.common.ViewPagerEx;
 import java.security.SignatureSpi;
 import java.util.ArrayList;
 
-/**
- * Created by eric on 27/01/17.
- */
-
 public class BootstrapController implements BootstrapContract.UserActionsListener {
     public static final String KEY_FINISHED = "key_finished";
 
